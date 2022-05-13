@@ -1,0 +1,36 @@
+.sidebar{
+    width: 15rem;
+    height: 100%;
+    background-color: red;
+}
+.sidebar-container div{
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    font-size: 1.7rem;
+    font-weight: 700;
+    background-color: antiquewhite;
+    align-items: center;
+}
+@media only screen and (max-width: 750px) {
+    .sidebar-subtitle{
+        display: none;
+    }
+    .sidebar-symbol{
+        font-size: 2.5rem;
+    }
+    .sidebar-container{
+        width: 5rem;
+    }
+}
+.sidebar-icon{
+    display: none;
+}
+@media only screen and (max-width: 500px){
+    .sidebar-icon{
+        display: block;
+    }
+    .sidebar-container, .search-bar{
+        display: none;
+    }
+}
