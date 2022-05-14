@@ -1,7 +1,7 @@
 import { Navbar } from "component";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { HomePage } from "./pages";
+import { HomePage, WatchPage } from "./pages";
 
 export const App = () => {
   return (
@@ -9,6 +9,7 @@ export const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/watch" element={<WatchPage />} />
       </Routes>
     </>
   );
