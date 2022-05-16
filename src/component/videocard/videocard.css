@@ -1,7 +1,7 @@
 .video-card{
     height: 20rem;
     width: 22rem;
-    box-shadow: 0px 0px 6px rgb(190, 190, 190);
+    box-shadow: 0px 0px 6px #bebebe;
     background-color: rgb(241, 240, 240);
     margin: .5rem;
     flex-wrap: wrap;
@@ -31,4 +31,41 @@
 }
 .creater, .view {
     color: gray;
+}
+.video-title{
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 10px;
+}
+.creator-image img{
+    height: 3rem;
+    width: 3rem;
+    border: 1px solid;
+    border-radius: 50%;
+}
+.view-wrapper{
+    height: 4rem;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: 10px;
+}
+.title{
+    font-weight: 500;
+}
+.watch-link{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+}
+.link{
+    display: flex;
+    font-weight: 500;
+}
+.link:hover{
+    background-color: #bebebe;
 }

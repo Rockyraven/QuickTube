@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./videocard.css";
 
-export const VideoCard = ({thumbnail, chanel_pic, title, creator, views, id}) => {
+export const VideoCard = ({thumbnail, chanel_pic, title, creator, views, _id}) => {
 
   return (
     <>
       <div className="video-card">
-    <Link to={`/watch/${id}`} >
+    <Link to={`/watch/${_id}`} >
         <div className="video-image">
           <img src={thumbnail} alt="video thumbnail" />
         </div>

@@ -1,8 +1,9 @@
 .video-listing-container{
     display: flex;
-    flex-wrap: wrap;
 }
-.videocard-list{
+ .videocard-list{
     display: flex;
     flex-wrap: wrap;
 }
+
+
