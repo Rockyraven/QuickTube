@@ -11,14 +11,12 @@ export const HomePage = () => {
       <div className="video-listing-container">
         <Sidebar />
         <div className="wrapping">
-
-        
           <Chip label="Song" variant="outlined" />
           <Chip label="JavaScript" variant="outlined" />
           <Chip label="Car" variant="outlined" />
           <Chip label="Tech" variant="outlined" />
-       
-        <div className="videocard-list">
+
+          <div className="videocard-list">
             {videoList.map((videos) => (
               <VideoCard
                 key={videos._id}
@@ -30,9 +28,9 @@ export const HomePage = () => {
                 thumbnail={videos.thumbnail}
               />
             ))}
-          </div> 
-          </div> 
           </div>
+        </div>
+      </div>
     </>
   );
 };

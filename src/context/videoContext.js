@@ -18,7 +18,6 @@ const VideoProvider = ({ children }) => {
     };
     getVideoData();
   }, []);
-  // console.log(videoList)
 
   return (
     <videoContext.Provider value={{ videoList }}>
