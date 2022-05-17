@@ -1,9 +1,30 @@
-import React from 'react'
+import { SuggestionCard } from "component";
+import { useVideo } from "context/videoContext";
+import React from "react";
+import { Outlet } from "react-router-dom";
+import "./watchpage.css";
 
 export const WatchPage = () => {
+  const { videoList } = useVideo();
+
   return (
-    <div>
-         <iframe width="768" height="384" src="`https://www.youtube.com" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div className="watchpage-container">
+      <div className="video-player-card">
+        <Outlet />
+      </div>
+      <div className="suggestion-cardlist">
+        {videoList.map((videos) => (
+          <SuggestionCard
+            key={videos._id}
+            _id={videos._id}
+            title={videos.title}
+            views={videos.views}
+            creator={videos.creator}
+            chanel_pic={videos.chanel_pic}
+            thumbnail={videos.thumbnail}
+          />
+        ))}
+      </div>
     </div>
-  )
-}
+  );
+};

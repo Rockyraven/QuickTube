@@ -2,7 +2,7 @@
  * Videos Database can be added here.
  * You can add videos of your wish with different attributes
  * */
- import { car1, carCh1, chn1, chn3, chn5, song1, song2, song3, song5, song6 } from "assets";
+ import { car1, carCh1, chn1, chn3, chn5, song1, song2, song3, song5, song6, song7 } from "assets";
 import { v4 as uuid } from "uuid";
 
 
@@ -24,15 +24,16 @@ export const videos = [
   },
   {
     _id: uuid(),
-    thumbnail: "https://i.ytimg.com/an_webp/kaIqhJ-BnnA/mqdefault_6s.webp?du=3000&sqp=CODa_ZMG&rs=AOn4CLDHZQ4q9VPe68wD52W21CtXWt1o2Q",
-    title: "Top 5 Best Tech Gadgets Under Rs.1000 - Part II⚡Feb 2022",
-    description: `Doston Aaj Ke Video Me Hum Baat Kar Rahe Hain Kuch Tech Gadgets Ke Baare Me Jo Under Rs.1000 Aate Hain. Ye Series Ko Aapne Bohot Pyaar Diya Hain Aur Isiliye Hum Aapke Liye Ye Video Lekar Aaye Hain, To Aap Ye Video Ant Jaroor Dekhiye Aur Video Ko Like Aur Share Karna Na   `,
-    creator: "Trakin tech",
+    thumbnail: song7,
+    title: "ZAYN, Taylor Swift - I Don’t Wanna Live Forever (Fifty Shades Darker)",
+    description: `I Don’t Wanna Live Forever (Fifty Shades Darker) Official Video
+    Song available on the Fifty Shades Darker Original Motion Picture Soundtrack `,
+    creator: "Vevo",
     views: "4.9M",
     createdAt: " May 10, 2022",
-    chanel_pic: "https://yt3.ggpht.com/EYXEN3n0cfYgs_zDqlSVk8JY1y6gLrzfmdV17uce1zkMEKRoH7VlLwaptPBh6zBk_ie-c7Qw=s48-c-k-c0x00ffffff-no-rj",
-    video: "kaIqhJ-BnnA",
-    categoryName: "Tech",
+    chanel_pic: chn3,
+    video: "-QTNFALG3U0",
+    categoryName: "song",
   },
   {
     _id: uuid(),
@@ -48,18 +49,7 @@ export const videos = [
     video: "J1rOfVst-EQ",
     categoryName: "song",
   },
-  {
-    _id: uuid(),
-    thumbnail: "https://i.ytimg.com/an_webp/f5OIH26JsOA/mqdefault_6s.webp?du=3000&sqp=CKC2_ZMG&rs=AOn4CLAfis2BNl0F2x17u-zfukFWNLAYYQ",
-    title: "OnePlus 10R Unboxing & Quick Look | Different OnePlus",
-    description: `1+ ka naya phone aa gaya hai doston  `,
-    creator: "Tech Burner",
-    views: "3.9M",
-    createdAt: " May 10, 2022",
-    chanel_pic: "https://yt3.ggpht.com/ytc/AKedOLSLzBlLalLFEXgvGHr6f9yBm9Y8PrJMXZC_hxTTlQ=s48-c-k-c0x00ffffff-no-rj",
-    video: "f5OIH26JsOA",
-    categoryName: "Tech",
-  },
+ 
   {
     _id: uuid(),
     thumbnail: song3,
