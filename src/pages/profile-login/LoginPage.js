@@ -28,6 +28,7 @@ export const LoginPage = () => {
           encodedToken: response.data.encodedToken,
           firstName: response.data.foundUser.firstName,
           lastName: response.data.foundUser.lastName,
+          email: response.data.foundUser.email
         })
 
       );
@@ -35,6 +36,7 @@ export const LoginPage = () => {
         encodedToken: response.data.encodedToken,
         firstName: response.data.foundUser.firstName,
         lastName: response.data.foundUser.lastName,
+        email: response.data.foundUser.email
       })
       navigate("/")
     } catch (error) {
