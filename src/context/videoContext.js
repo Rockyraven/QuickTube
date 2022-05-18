@@ -6,6 +6,11 @@ const videoContext = createContext();
 
 const VideoProvider = ({ children }) => {
   const [videoList, setVideoList] = useState([]);
+  const [user, setUser] = useState(
+    localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user"))
+      : null
+  );
 
   useEffect(() => {
     const getVideoData = async () => {
@@ -20,7 +25,7 @@ const VideoProvider = ({ children }) => {
   }, []);
 
   return (
-    <videoContext.Provider value={{ videoList }}>
+    <videoContext.Provider value={{ videoList, user, setUser }}>
       {children}
     </videoContext.Provider>
   );

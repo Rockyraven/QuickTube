@@ -10,45 +10,45 @@ import ThumbUpOffAltOutlinedIcon from "@mui/icons-material/ThumbUpOffAltOutlined
 
 export const Sidebar = () => {
   return (
-    <div className="sidebar">
+    
       <div className="sidebar-container">
         <Link to="/home">
-          <div>
+          <div className="link" >
             <HomeOutlinedIcon className="sidebar-symbol " />
             <p className="sidebar-subtitle">Home</p>
           </div>
         </Link>
         <Link to="/home">
-          <div>
+          <div className="link">
             <ExploreOutlinedIcon className="sidebar-symbol " />
             <p className="sidebar-subtitle">Explore</p>
           </div>
         </Link>
         <Link to="/home">
-          <div>
+          <div className="link">
             <VideoLibraryOutlinedIcon className="sidebar-symbol " />
             <p className="sidebar-subtitle">Library</p>
           </div>
         </Link>
         <Link to="/home">
-          <div>
+          <div className="link">
             <RestoreOutlinedIcon className="sidebar-symbol" />
             <p className="sidebar-subtitle">History</p>
           </div>
         </Link>
         <Link to="/home">
-          <div>
+          <div className="link">
             <WatchLaterOutlinedIcon className="sidebar-symbol" />
             <p className="sidebar-subtitle">Watch Later</p>
           </div>
         </Link>
         <Link to="/home">
-          <div>
+          <div className="link">
             <ThumbUpOffAltOutlinedIcon className="sidebar-symbol" />
             <p className="sidebar-subtitle">Liked Videos</p>
           </div>
         </Link>
       </div>
-    </div>
+   
   );
 };

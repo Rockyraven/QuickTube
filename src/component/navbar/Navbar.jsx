@@ -1,14 +1,17 @@
+import { useVideo } from "context/videoContext";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
+import LoginIcon from '@mui/icons-material/Login';
 
 export const Navbar = () => {
+  const {user} = useVideo();
   return (
     <>
       <div className="navbar-container">
         <div className="home-heading">
           <i className="sidebar-icon fa fa-bars"></i>
-          <Link to="/">QuickTube</Link>
+          <Link to="/" className="head-link">QuickTube</Link>
         </div>
 
         <div className="search-bar">
@@ -22,9 +25,14 @@ export const Navbar = () => {
           </button>
         </div>
         <div className="login-section">
-          <Link to="/login" className="login">
+          {user? <Link to="/profile" className="login">
             <i className="fa fa-user"></i>
-          </Link>
+            
+          </Link> : <Link to="/login" className="login">
+            <LoginIcon/>
+          </Link>}
+         
+         
         </div>
       </div>
     </>

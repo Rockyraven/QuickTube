@@ -4,6 +4,7 @@
     height: 5rem;
     align-items: center;
     box-shadow: 0px 0px 5px rgb(139, 139, 139);
+     background-color: var(--clr-border-color-3);
 }
 .home-heading{
     font-size: 2rem;
@@ -14,20 +15,32 @@
     justify-content: center;
     align-items: center;
 }
+.head-link{
+    color: var(--icon-color);
+
+}
 .login-section{
     font-size: 1.5rem;
     margin-right: 2rem;
     font-weight: 600;
     gap: 2rem;
+    color: var(--icon-color);
 }
 .search-bar input{
     padding: 5px;
     font-size: 1rem;
     width: 20rem;
     height: 3rem;
+    background-color: var(--clr-page-bg);
 }
 .search-button{
     padding: 0.9rem;
+    background-color: var(--clr-page-bg);
+
+}
+.login{
+    color: var(--icon-color);
+    
 }
 .bell{
     margin-right: 2rem;
