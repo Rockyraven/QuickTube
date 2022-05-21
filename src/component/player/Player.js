@@ -4,11 +4,24 @@ import { Link, useParams } from "react-router-dom";
 import ThumbUpOffAltOutlinedIcon from "@mui/icons-material/ThumbUpOffAltOutlined";
 import PlaylistAddOutlinedIcon from "@mui/icons-material/PlaylistAddOutlined";
 import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
+import axios from "axios";
 
 export const Player = () => {
-  const { videoList } = useVideo();
+  const { videoList, user } = useVideo();
   const { videoListID } = useParams();
   const isVideoExist = videoList.find((ele) => ele._id === videoListID);
+  const likeVideo = async() => {
+    try {
+      const response = await axios.post("/api/user/likes",{video: isVideoExist},{
+        headers: {
+          'authorization': user.encodedToken
+        }
+      })
+    }
+    catch(error){
+      console.log(error)
+    }
+  }
   return (
     <div>
       <iframe
@@ -31,7 +44,7 @@ export const Player = () => {
         </div>
         <div className="watch-link ">
           <Link to="#">
-            <div className="like-button link">
+            <div className="like-button link" onClick={likeVideo}>
               {" "}
               <ThumbUpOffAltOutlinedIcon className="sidebar-symbol" />
               <p>LIKE</p>

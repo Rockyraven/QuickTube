@@ -1,7 +1,8 @@
 import { Navbar, Player } from "component";
+import { ProtectedRoute } from "component/ProtectedRoute";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { HomePage, LoginPage, Profile, WatchPage } from "./pages";
+import { HomePage, LikedPage, LoginPage, Profile, WatchPage } from "./pages";
 
 export const App = () => {
   return (
@@ -12,8 +13,11 @@ export const App = () => {
         <Route path="/watch" element={<WatchPage />}>
           <Route path=":videoListID" element={<Player />} />
         </Route>
-        <Route path="/login" element={<LoginPage/>} />
-        <Route path='/profile' element={<Profile/>} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/liked" element={<LikedPage />} />
+        </Route>
       </Routes>
     </>
   );

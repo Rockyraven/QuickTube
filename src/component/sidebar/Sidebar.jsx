@@ -42,7 +42,7 @@ export const Sidebar = () => {
             <p className="sidebar-subtitle">Watch Later</p>
           </div>
         </Link>
-        <Link to="/home">
+        <Link to="/liked">
           <div className="link">
             <ThumbUpOffAltOutlinedIcon className="sidebar-symbol" />
             <p className="sidebar-subtitle">Liked Videos</p>
