@@ -28,6 +28,7 @@ export const LoginPage = () => {
           encodedToken: response.data.encodedToken,
           firstName: response.data.foundUser.firstName,
           lastName: response.data.foundUser.lastName,
+          email: response.data.foundUser.email
         })
 
       );
@@ -35,6 +36,7 @@ export const LoginPage = () => {
         encodedToken: response.data.encodedToken,
         firstName: response.data.foundUser.firstName,
         lastName: response.data.foundUser.lastName,
+        email: response.data.foundUser.email
       })
       navigate("/")
     } catch (error) {
@@ -45,35 +47,33 @@ export const LoginPage = () => {
   return (
     <div className="login-page-container">
       <div className="login-wrapper">
-        <h1>Login</h1>
-
-        <TextField
+        <h1 className="login-tilte">Login</h1>
+        <input 
+          type="text"
           id="outlined-password-input"
           className="input-box"
           label="user"
-          type="text"
           autoComplete="current-password"
+          placeholder="User Name"
           onInput={(e) => setEmail(e.target.value)}
-        />
-        <TextField
+           />
+        <input 
+          type="text"
+          label="password"
           id="outlined-password-input"
           className="input-box"
-          label="password"
-          type="password"
           autoComplete="current-password"
+          placeholder="Password"
           onInput={(e) => setPassword(e.target.value)}
-        />
-
-        <button
+           />
+        <button className="demo-login-button"
           onClick={() => {
             loginHandler("adarshbalika@gmail.com", "adarshBalika123");
-            // setEmail("adarshbalika@gmail.com");
-            // setPassword("adarshBalika123");
           }}
         >
           Login with guest user
         </button>
-        <button onClick={() => loginHandler(email, password)}>Login</button>
+        <button className="login-button" onClick={() => loginHandler(email, password)}>Login</button>
       </div>
     </div>
   );
