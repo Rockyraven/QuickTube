@@ -6,16 +6,7 @@ import { Link } from 'react-router-dom';
 
 export const RemoveCard = ({thumbnail, chanel_pic, title, creator, views, _id}) => {
     const {removeLike} = useLike();
-    const removeVideo = () => {
 
-    }
-    const removeLikeVideo = (id) => {
-
-    
-        removeLike((wishlistProducts) =>
-          wishlistProducts.filter((item) => item._id !== id)
-        );
-      };
    
   return (
     <>
@@ -37,7 +28,7 @@ export const RemoveCard = ({thumbnail, chanel_pic, title, creator, views, _id}) 
           </div>
         </div>
       </Link>
-            <p onClick={(_id)=>removeLikeVideo(_id)}> <i className="fa fa-trash"></i></p>
+            <p onClick={()=>removeLike(_id)}> <i className="fa fa-trash"></i></p>
       </div>
     </>
   );

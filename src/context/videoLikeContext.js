@@ -7,21 +7,20 @@ const videoLikeContext = createContext();
 
 const LikeProvider = ({children}) => {
 
-    const [ likedVideo, setLikedVideo ] = useState([]);
- 
   const { user } = useVideo();
   useEffect(()=>{
     removeLike()
   },[])
 
-  const removeLike = async () => {
+  const removeLike = async (videoID) => {
     try {
-      const response = await axios.delete("/api/user/likes/:videoID",{
+      console.log(videoID)
+      const response = await axios.delete(`/api/user/likes/${videoID} `  ,{
         headers: {
           'authorization': user.encodedToken
         }
       });
-      console.log(response.data.likes)
+      console.log(response)
     }
     catch(error){
       console.log(error)
@@ -29,7 +28,7 @@ const LikeProvider = ({children}) => {
   }
  
     return(
-        <videoLikeContext.Provider value={{likedVideo, removeLike}}>
+        <videoLikeContext.Provider value={{ removeLike }}>
             {children}
         </videoLikeContext.Provider>
     )
