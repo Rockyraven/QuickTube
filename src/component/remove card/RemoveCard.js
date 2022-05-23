@@ -4,7 +4,7 @@ import { useLike } from 'context/videoLikeContext';
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-export const RemoveCard = ({thumbnail, chanel_pic, title, creator, views, _id}) => {
+export const RemoveCard = ({thumbnail, chanel_pic, title, creator, views, _id, removeFn}) => {
     const {removeLike} = useLike();
 
    
@@ -28,7 +28,7 @@ export const RemoveCard = ({thumbnail, chanel_pic, title, creator, views, _id}) 
           </div>
         </div>
       </Link>
-            <p onClick={()=>removeLike(_id)}> <i className="fa fa-trash"></i></p>
+            <p onClick={()=>removeFn(_id)}> <i className="fa fa-trash"></i></p>
       </div>
     </>
   );

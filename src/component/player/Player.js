@@ -10,6 +10,7 @@ export const Player = () => {
   const { videoList, user } = useVideo();
   const { videoListID } = useParams();
   const isVideoExist = videoList.find((ele) => ele._id === videoListID);
+
   const likeVideo = async() => {
     try {
       const response = await axios.post("/api/user/likes",{video: isVideoExist},{
@@ -22,6 +23,22 @@ export const Player = () => {
       console.log(error)
     }
   }
+  
+  const watchLater = async() => {
+    try {
+      
+      const response = await axios.post("/api/user/watchlater",{video: isVideoExist},{
+        headers: {
+          'authorization': user.encodedToken
+        }
+      })
+      console.log(response , "watch")
+    }
+    catch(error){
+      console.log(error)
+    }
+  }
+
   return (
     <div>
       <iframe
@@ -29,9 +46,9 @@ export const Player = () => {
         height="480"
         src={`https://www.youtube.com/embed/${isVideoExist.video}`}
         title="YouTube video player"
-        frameborder="0"
+        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
+        allowFullScreen
       ></iframe>
       <p className="video-title"> {isVideoExist.title}</p>
       <div className="view-wrapper">
@@ -57,8 +74,8 @@ export const Player = () => {
               <p>SAVE TO PLAYLIST</p>
             </div>
           </Link>
-          <Link to="#">
-            <div className="watch-button link">
+          <Link to="#" >
+            <div className="watch-button link" onClick={watchLater}>
               {" "}
               <WatchLaterOutlinedIcon className="sidebar-symbol" />
               <p>WATCH LATER</p>

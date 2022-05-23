@@ -8,9 +8,23 @@ const videoLikeContext = createContext();
 const LikeProvider = ({children}) => {
 
   const { user } = useVideo();
-  useEffect(()=>{
-    removeLike()
-  },[])
+  
+  const [likedVideo, setLikedVideo] = useState([]);
+
+
+  const getLikes = async () => {
+    try {
+      const response = await axios.get("/api/user/likes", {
+        headers: {
+          authorization: user.encodedToken,
+        },
+      });
+      setLikedVideo(response.data.likes);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+ 
 
   const removeLike = async (videoID) => {
     try {
@@ -21,6 +35,7 @@ const LikeProvider = ({children}) => {
         }
       });
       console.log(response)
+      // setLikedVideo(prev=>prev.filter(item=> item._id !==response.data.likes[0]._id ))
     }
     catch(error){
       console.log(error)
@@ -28,7 +43,7 @@ const LikeProvider = ({children}) => {
   }
  
     return(
-        <videoLikeContext.Provider value={{ removeLike }}>
+        <videoLikeContext.Provider value={{ removeLike, likedVideo, getLikes }}>
             {children}
         </videoLikeContext.Provider>
     )
