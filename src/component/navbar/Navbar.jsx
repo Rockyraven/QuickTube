@@ -10,7 +10,8 @@ export const Navbar = () => {
     <>
       <div className="navbar-container">
         <div className="home-heading">
-          <i className="sidebar-icon fa fa-bars"></i>
+          <Link to='/model'> <i className="sidebar-icon fa fa-bars"></i></Link>
+         
           <Link to="/" className="head-link">QuickTube</Link>
         </div>
 

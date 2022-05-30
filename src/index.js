@@ -1,3 +1,4 @@
+import { LibraryProvider } from "context/libraryContext";
 import { LikeProvider } from "context/videoLikeContext";
 import { WatchProvider } from "context/watchLatercontext";
 import React from "react";
@@ -14,11 +15,13 @@ makeServer();
 ReactDOM.render(
   <BrowserRouter>
     <VideoProvider>
-      <WatchProvider>
-        <LikeProvider>
-          <App />
-        </LikeProvider>
-      </WatchProvider>
+      <LibraryProvider>
+        <WatchProvider>
+          <LikeProvider>
+            <App />
+          </LikeProvider>
+        </WatchProvider>
+      </LibraryProvider>
     </VideoProvider>
   </BrowserRouter>,
 

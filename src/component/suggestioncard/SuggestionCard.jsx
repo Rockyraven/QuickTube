@@ -25,8 +25,8 @@ export const SuggestionCard = ({
               </div>
               <div className="video-title">
                 <p className="description">{title}</p>
-                <p className="creater">{creator}</p>
-                <p className="view">{views} view</p>
+                <p className="view-text">{creator}</p>
+                <p className="view-text">{views} view</p>
               </div>
             </div>
           </div>
