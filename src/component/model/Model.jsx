@@ -1,7 +1,7 @@
 import { useLibrary } from "context/libraryContext";
 import React from "react";
 import "./model.css";
-export const Model = ({video}) => {
+export const Model = ({ video }) => {
   const {
     display,
     setDisplay,
@@ -9,7 +9,7 @@ export const Model = ({video}) => {
     setPlayListName,
     createLibraryVideo,
     library,
-    addVideoToLibraray
+    addVideoToLibraray,
   } = useLibrary();
   const modelCloseHandler = () => {
     setDisplay("none");
@@ -25,9 +25,18 @@ export const Model = ({video}) => {
               <i className="fa fa-times"></i>
             </p>
           </div>
-          {library.map((item) => (
-            <div onClick={() => addVideoToLibraray(item._id,video) } key={item._id}>{item.title}</div>
-          ))}
+         
+            {library.map((item) => (
+              
+
+              <div className="playlist-list"
+                onClick={() => addVideoToLibraray(item._id, video)}
+                key={item._id}
+              >
+                {item.title}
+              </div>
+            ))}
+        
           <span className="input-label">PlayList Name: </span>
           <input
             type="text"

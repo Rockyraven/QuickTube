@@ -37,3 +37,11 @@
     padding: 7px;
     font-size: 1rem;
 }
+.playlist-list{
+    font-size: 1rem;
+    color: var(--white);
+    cursor: pointer;   
+}
+.playlist-list:hover{
+    color: var(--icon-color);
+}

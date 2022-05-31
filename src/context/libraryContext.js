@@ -13,6 +13,7 @@ const LibraryProvider = ({children}) => {
   const [ display, setDisplay ] = useState("none");
   const [ playlistName, setPlayListName ] = useState("");
   const [ library, setLibrary ] = useState([]);
+  const [ getLibraryVideo, setGetLibraryVideo ] = useState([]);
 
   const createLibraryVideo = async (title) => {
     try {
@@ -54,7 +55,7 @@ const LibraryProvider = ({children}) => {
         },
       });
 
-      console.log(response);
+      setGetLibraryVideo(response.data.playlist);
     } catch (error) {
       console.log(error);
     }
@@ -97,7 +98,7 @@ const LibraryProvider = ({children}) => {
   }
  
     return(
-        <libraryContext.Provider value={{ removeLibrary, libraryVideo, getLibrary, display, setDisplay, playlistName, setPlayListName, createLibraryVideo, library, addVideoToLibraray, getLibraryVideos }}>
+        <libraryContext.Provider value={{ removeLibrary, libraryVideo, getLibrary, display, setDisplay, playlistName, setPlayListName, createLibraryVideo, library, addVideoToLibraray, getLibraryVideos, getLibraryVideo }}>
             {children}
         </libraryContext.Provider>
     )
