@@ -7,6 +7,7 @@ import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
 import axios from "axios";
 import { useLibrary } from "context/libraryContext";
 import { Model } from "component";
+import { toast } from "react-toastify";
 
 export const Player = () => {
   const { videoList, user } = useVideo();
@@ -27,6 +28,7 @@ export const Player = () => {
     } catch (error) {
       console.log(error);
     }
+    toast.success("Added in Liked Video")
   };
  
 
@@ -44,6 +46,7 @@ export const Player = () => {
     } catch (error) {
       console.log(error);
     }
+    toast.success("Added in WatchLater Video")
   };
 
   return (

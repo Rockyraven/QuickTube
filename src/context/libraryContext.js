@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { useVideo } from "./videoContext";
 
 
@@ -13,7 +14,7 @@ const LibraryProvider = ({children}) => {
   const [ display, setDisplay ] = useState("none");
   const [ playlistName, setPlayListName ] = useState("");
   const [ library, setLibrary ] = useState([]);
-  const [ getLibraryVideo, setGetLibraryVideo ] = useState([]);
+  const [ getLibraryVideo, setGetLibraryVideo ] = useState({videos: []});
 
   const createLibraryVideo = async (title) => {
     try {
@@ -78,27 +79,17 @@ const LibraryProvider = ({children}) => {
     } catch (error) {
       console.log(error);
     }
+    toast.success("Added in WatchLater Video")
   };
 
 
-  const removeLibrary = async (videoID) => {
-    try {
-      console.log(videoID)
-      const response = await axios.delete(`/api/user/playlists/${videoID} `  ,{
-        headers: {
-          'authorization': user.encodedToken
-        }
-      });
-      console.log(response)
-      // setLikedVideo(prev=>prev.filter(item=> item._id !==response.data.likes[0]._id ))
-    }
-    catch(error){
-      console.log(error)
-    }
+  const removePlaylist = async (playlistID) => {
+    setLibrary(library.filter(item => item._id !== playlistID))
+     
   }
  
     return(
-        <libraryContext.Provider value={{ removeLibrary, libraryVideo, getLibrary, display, setDisplay, playlistName, setPlayListName, createLibraryVideo, library, addVideoToLibraray, getLibraryVideos, getLibraryVideo }}>
+        <libraryContext.Provider value={{  libraryVideo, getLibrary, display, setDisplay, playlistName, setPlayListName, createLibraryVideo, library, addVideoToLibraray, getLibraryVideos, getLibraryVideo, removePlaylist }}>
             {children}
         </libraryContext.Provider>
     )

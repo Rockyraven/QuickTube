@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import { RemoveCard, Sidebar, VideoCard } from "component";
+import { RemoveCard, Sidebar } from "component";
 import { useWatchLater } from "context/watchLatercontext";
+import { Link } from "react-router-dom";
 
 export const WatchLater = () => {
   const { watchLater, getWatchLater } = useWatchLater();
@@ -12,6 +13,16 @@ export const WatchLater = () => {
   return (
     <div className="video-listing-container">
       <Sidebar />
+      {watchLater.length === 0 ? (
+            <div className="login-page-container">
+          <div className="no-video-present">
+              <h1 className="title-text"> There is no WatchLater Video 😢 </h1>
+              <Link to="/" className="explore-button">
+                Explore Video
+              </Link>
+            </div>
+          </div>
+        ) : (
 
       <div className="videocard-list">
         {watchLater.map((videos) => (
@@ -26,6 +37,7 @@ export const WatchLater = () => {
           />
         ))}
       </div>
+   )}
     </div>
   );
 };

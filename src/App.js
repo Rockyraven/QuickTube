@@ -2,6 +2,9 @@ import { Model, Navbar, Player } from "component";
 import { ProtectedRoute } from "component/ProtectedRoute";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
+
 import {
   HomePage,
   Library,
@@ -15,6 +18,17 @@ import {
 export const App = () => {
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
