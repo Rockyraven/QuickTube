@@ -1,15 +1,38 @@
-import { Navbar, Player } from "component";
+import { Model, Navbar, Player } from "component";
 import { ProtectedRoute } from "component/ProtectedRoute";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { HomePage, LikedPage, LoginPage, Profile, WatchLater, WatchPage } from "./pages";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
+
+import {
+  HomePage,
+  Library,
+  LikedPage,
+  LoginPage,
+  Profile,
+  WatchLater,
+  WatchPage,
+} from "./pages";
 
 export const App = () => {
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/model" element={<Model/>} />
         <Route path="/watch" element={<WatchPage />}>
           <Route path=":videoListID" element={<Player />} />
         </Route>
@@ -17,7 +40,8 @@ export const App = () => {
         <Route path="/profile" element={<Profile />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/liked" element={<LikedPage />} />
-          <Route path="/watchlater" element={<WatchLater/>} />
+          <Route path="/watchlater" element={<WatchLater />} />
+          <Route path="/library" element={<Library />} />
         </Route>
       </Routes>
     </>

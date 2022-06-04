@@ -2,7 +2,7 @@
  * Videos Database can be added here.
  * You can add videos of your wish with different attributes
  * */
- import { car1, carCh1, chn1, chn3, chn5, song1, song2, song3, song5, song6, song7 } from "assets";
+ import { car1, carCh1, chn1, chn3, chn5, java, java2, song1, song2, song3, song5, song6, song7, sports, sports2, sports3, tech, tech2 } from "assets";
 import { v4 as uuid } from "uuid";
 
 
@@ -104,7 +104,7 @@ export const videos = [
   },
   {
     _id: uuid(),
-    thumbnail: "//i.ytimg.com/an_webp/FpLNFPzttX8/mqdefault_6s.webp?du=3000&sqp=CJbg_ZMG&rs=AOn4CLB-FUveUXhGLtUHIauOwK7Nm82RtA",
+    thumbnail: sports,
     title: "Lamborghini Aventador SVJ DRAG RACING vs Huracan Performante!",
     description: `During Supercar Sunday at circuit Assen I have filmed this brand new Lamborghini Aventador SVJ doing drag races and laps on track!`,
     creator: "Supercar Blondie",
@@ -117,7 +117,7 @@ export const videos = [
   
   {
     _id: uuid(),
-    thumbnail: "https://i.ytimg.com/an_webp/dEg_tVV0_n0/mqdefault_6s.webp?du=3000&sqp=COvJ_ZMG&rs=AOn4CLC20pBtquEYN5_0Yvqr085tCxJsZQ",
+    thumbnail: sports3,
     title: "2021 Formula Rapide vs Hypercars at Highland",
     description: `Video Produced by Assetto Corsa Racing Simulator`,
     creator: "virtuSportsCars",
@@ -129,7 +129,7 @@ export const videos = [
   },
   {
     _id: uuid(),
-    thumbnail: "https://i.ytimg.com/vi/pN6jk0uUrD8/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDHVB8xIJcebxSg0uFB8mFvTJQH1g",
+    thumbnail: java2,
     title: "Namaste JavaScript 🙏 Course - JS Video Tutorials by Akshay Saini",
     description: `Namaste JavaScript is a pure in-depth JavaScript Course released for Free on Youtube. It will cover the core concepts of JavaScript in detail and everything about how JS works behind the scenes inside the JavaScript engine.`,
     creator: "Namaste JavScript",
@@ -141,7 +141,7 @@ export const videos = [
   },
   {
     _id: uuid(),
-    thumbnail: "https://i.ytimg.com/an_webp/bHWgc5MPnPA/mqdefault_6s.webp?du=3000&sqp=CMDc_ZMG&rs=AOn4CLBIpPFI94uxg3KmYlJFF-jlP45koQ",
+    thumbnail: sports2,
     title: "Bugatti Vision GT vs Super Cars at Highlands",
     description: `The Bugatti Vision GT mod credits are: Assetto Garage`,
     creator: "virtuSportsCars",
@@ -154,7 +154,7 @@ export const videos = [
   
   {
     _id: uuid(),
-    thumbnail: "https://i.ytimg.com/an_webp/iLWTnMzWtj4/mqdefault_6s.webp?du=3000&sqp=CLzu_ZMG&rs=AOn4CLAddQZB42fMhabkyn3VpbwmMUJq3g",
+    thumbnail: java,
     title: "How JavaScript Code is executed? ❤️& Call Stack | Namaste JavaScript Ep. 2",
     description: `Understand how the code is executed in JavaScript. How an Execution Context is created and how the Call Stack works. Behind the scenes, there are a lot of things happening in JS Engine when the code is executed. All core fundamentals are covered in this video with examples. `,
     creator: "Namaste JavScript",
@@ -166,7 +166,7 @@ export const videos = [
   },
   {
     _id: uuid(),
-    thumbnail: "https://i.ytimg.com/an_webp/C1YfOTAD42M/mqdefault_6s.webp?du=3000&sqp=CKG9_ZMG&rs=AOn4CLBAPkObsrzD7MhufmLbNDkHp8ddMQ",
+    thumbnail: tech2,
     title: "OnePlus Nord 2T 5G Unboxing & Quick Look !",
     description: `Understand how the code is executed in JavaScript. How an Execution Context is created and how the Call Stack works. Behind the scenes, there are a lot of things happening in JS Engine when the code is executed. All core fundamentals are covered in this video with examples. `,
     creator: "Tech Burner",
@@ -179,7 +179,20 @@ export const videos = [
  
   {
     _id: uuid(),
-    thumbnail: "https://i.ytimg.com/an_webp/uH-tVP8MUs8/mqdefault_6s.webp?du=3000&sqp=CNjW_ZMG&rs=AOn4CLBMcIlFhqcrtaubzHvQWrcMyGRcWQ",
+    thumbnail: tech,
+    title: "iQOO Neo 6 Unboxing & Review *Midrange King*?",
+    description: `iQOO ka New Phone aa gaya hai 😁 `,
+    creator: "Tech Burner",
+    views: "1.2M",
+    createdAt: " May 10, 2022",
+    chanel_pic: "https://yt3.ggpht.com/ytc/AKedOLSLzBlLalLFEXgvGHr6f9yBm9Y8PrJMXZC_hxTTlQ=s48-c-k-c0x00ffffff-no-rj",
+    video: "C1YfOTAD42M",
+    categoryName: "Tech",
+  },
+ 
+  {
+    _id: uuid(),
+    thumbnail: java2,
     title: "The Scope Chain, 🔥Scope & Lexical Environment | Namaste JavaScript Ep. 7",
     description: `Diving deep into Scope, Lexical Environment, and The Scope Chain in JavaScript with a lot of code examples and visuals. This is a HOT interview topic and this video cover everything that happens under the hood. `,
     creator: "Namaste JavScript",

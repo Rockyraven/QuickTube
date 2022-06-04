@@ -1,7 +1,8 @@
 import { useVideo } from "context/videoContext";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import './profile.css'
+import { toast } from "react-toastify";
+import "./profile.css";
 
 export const Profile = () => {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ export const Profile = () => {
     localStorage.removeItem("user");
     setUser(null);
     navigate("/login");
+    toast.error("Logged Out successfully")
   };
 
   return (
@@ -20,7 +22,9 @@ export const Profile = () => {
             Name: {user.firstName} {user.lastName}
           </p>
           <p className="login-tilte">Email: {user.email}</p>
-          <button className="login-button" onClick={logoutHandler}>Logout</button>
+          <button className="login-button" onClick={logoutHandler }>
+            Logout
+          </button>
         </div>
       </div>
     </>

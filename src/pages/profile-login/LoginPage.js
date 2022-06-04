@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./login.css";
-import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { useVideo } from "context/videoContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -69,6 +69,7 @@ export const LoginPage = () => {
         <button className="demo-login-button"
           onClick={() => {
             loginHandler("adarshbalika@gmail.com", "adarshBalika123");
+            toast.success("LoggedIn successfully")
           }}
         >
           Login with guest user

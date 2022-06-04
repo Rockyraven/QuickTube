@@ -6,6 +6,9 @@
     box-shadow: 0px 0px 5px rgb(139, 139, 139);
      background-color: var(--clr-border-color-3);
 }
+.sidebar-icon{
+    color: var(--icon-color);
+}
 .home-heading{
     font-size: 2rem;
     margin-left: 2rem;
@@ -44,6 +47,10 @@
 }
 .bell{
     margin-right: 2rem;
+}
+.search-input-box{
+    border-color: var(--icon-color);
+    color: white;
 }
 @media only screen and (max-width: 700px) {
     .search-bar input {
