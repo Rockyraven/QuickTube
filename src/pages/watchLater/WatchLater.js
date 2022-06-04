@@ -4,7 +4,7 @@ import { useWatchLater } from "context/watchLatercontext";
 import { Link } from "react-router-dom";
 
 export const WatchLater = () => {
-  const { watchLater, getWatchLater } = useWatchLater();
+  const { watchLater, getWatchLater, removeWatchVideo } = useWatchLater();
 
   useEffect(()=>{
     getWatchLater()
@@ -28,6 +28,7 @@ export const WatchLater = () => {
         {watchLater.map((videos) => (
           <RemoveCard
             key={videos._id}
+            removeFn={removeWatchVideo}
             _id={videos._id}
             title={videos.title}
             views={videos.views}

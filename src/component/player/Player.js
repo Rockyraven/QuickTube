@@ -25,10 +25,10 @@ export const Player = () => {
           },
         }
       );
+      toast.success("Added in Liked Video")
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.errors[0]);
     }
-    toast.success("Added in Liked Video")
   };
  
 
@@ -43,10 +43,10 @@ export const Player = () => {
           },
         }
       );
+      toast.success("Added in WatchLater Video")
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.errors[0]);
     }
-    toast.success("Added in WatchLater Video")
   };
 
   return (

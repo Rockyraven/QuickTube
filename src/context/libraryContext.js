@@ -15,6 +15,7 @@ const LibraryProvider = ({children}) => {
   const [ playlistName, setPlayListName ] = useState("");
   const [ library, setLibrary ] = useState([]);
   const [ getLibraryVideo, setGetLibraryVideo ] = useState({videos: []});
+  const [ removePlaylist, setRemovePlaylist] = useState([]);
 
   const createLibraryVideo = async (title) => {
     try {
@@ -73,23 +74,32 @@ const LibraryProvider = ({children}) => {
           },
         }
         );
-        // setLibrary(response.data.playlists)
-        console.log(response.data.playlist)
-
+        toast.success("Added in WatchLater Video")
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.errors[0]);
     }
-    toast.success("Added in WatchLater Video")
   };
 
-
-  const removePlaylist = async (playlistID) => {
-    setLibrary(library.filter(item => item._id !== playlistID))
-     
+  const removePlayList = async (playlistId) => {
+    try {
+      console.log(playlistId)
+      const response = await axios.delete(`/api/user/playlists//${playlistId}`, {
+        headers: {
+          'authorization': user.encodedToken
+        }
+      });
+      // setRemovePlaylist(response.data.likes)
+      console.log(response);
+      toast.error("Video Removed");
+    }
+    catch(error){
+      console.log(error)
+    }
   }
+
  
     return(
-        <libraryContext.Provider value={{  libraryVideo, getLibrary, display, setDisplay, playlistName, setPlayListName, createLibraryVideo, library, addVideoToLibraray, getLibraryVideos, getLibraryVideo, removePlaylist }}>
+        <libraryContext.Provider value={{  libraryVideo, getLibrary, display, setDisplay, playlistName, setPlayListName, createLibraryVideo, library, addVideoToLibraray, getLibraryVideos, getLibraryVideo, removePlayList }}>
             {children}
         </libraryContext.Provider>
     )

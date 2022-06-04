@@ -77,3 +77,14 @@
 .link:hover {
   background-color: #bebebe;
 }
+.delete-button{
+  height: 2.5rem;
+  width: 3rem;
+  padding: 8px 11px 6px 11px;
+  margin-left: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: var(--grey);
+  color: var(--icon-color);
+}

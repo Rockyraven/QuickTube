@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { useVideo } from "./videoContext";
 
 
@@ -25,17 +26,16 @@ const LikeProvider = ({children}) => {
     }
   };
  
-
   const removeLike = async (videoID) => {
     try {
       console.log(videoID)
-      const response = await axios.delete(`/api/user/likes/${videoID} `  ,{
+      const response = await axios.delete(`/api/user/likes/${videoID}`, {
         headers: {
           'authorization': user.encodedToken
         }
       });
-      console.log(response)
-      // setLikedVideo(prev=>prev.filter(item=> item._id !==response.data.likes[0]._id ))
+      setLikedVideo(response.data.likes)
+      toast.error("Video Removed");
     }
     catch(error){
       console.log(error)
