@@ -16,7 +16,6 @@ export const Library = () => {
   useEffect(() => {
     getLibrary();
   }, []);
-  console.log(getLibraryVideo);
   return (
     <>
       <div className="video-listing-container">

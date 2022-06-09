@@ -1,4 +1,4 @@
-import { SuggestionCard } from "component";
+import { Sidebar, SuggestionCard } from "component";
 import { useVideo } from "context/videoContext";
 import React from "react";
 import { Outlet } from "react-router-dom";
@@ -9,10 +9,9 @@ export const WatchPage = () => {
 
   return (
     <div className="watchpage-container">
-      <div className="video-player-card">
-        <Outlet />
-      </div>
+      <Sidebar />
       <div className="suggestion-cardlist">
+        <Outlet />
         {videoList.map((videos) => (
           <SuggestionCard
             key={videos._id}

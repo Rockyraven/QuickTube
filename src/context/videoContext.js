@@ -31,6 +31,9 @@ const VideoProvider = ({ children }) => {
   }, []);
 
 
+  const allFilterVideo = () => {
+    setFilterVideo(videoList);
+  };
   const songFilterVideo = () => {
     setFilterVideo(videoList.filter((item) => item.categoryName === "song"));
   };
@@ -59,6 +62,7 @@ const VideoProvider = ({ children }) => {
         javaScriptFilterVideo,
         carFilterVideo,
         techFilterVideo,
+        allFilterVideo
       }}
     >
       {children}

@@ -5,13 +5,9 @@
     display: flex;
     flex-wrap: wrap;
 }
-.video-filter{
-    margin: 0.5rem;
-    color: white;
-    font-size: 2rem;
+.wrapping{
+    margin-top: 5px;
 }
-.video-filter:hover{
-background-color: var(--icon-color);
-}
+
 
 

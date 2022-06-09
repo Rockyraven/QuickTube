@@ -39,6 +39,7 @@ export const RemoveCard = ({
           <div className="video-image" onClick={HistoryVideo}>
             <img src={thumbnail} alt="video thumbnail" />
           </div>
+        </Link>
           <div className="video-title-wrapper" >
             <div className="video-image" onClick={HistoryVideo}>
               <img src={chanel_pic} alt="" />
@@ -55,7 +56,6 @@ export const RemoveCard = ({
             </p>
           </div>
           
-        </Link>
       </div>
     </>
   );
