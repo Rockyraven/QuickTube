@@ -1,3 +1,4 @@
+import { HistoryProvider } from "context/historyContext";
 import { LibraryProvider } from "context/libraryContext";
 import { LikeProvider } from "context/videoLikeContext";
 import { WatchProvider } from "context/watchLatercontext";
@@ -18,7 +19,9 @@ ReactDOM.render(
       <LibraryProvider>
         <WatchProvider>
           <LikeProvider>
-            <App />
+            <HistoryProvider>
+              <App />
+            </HistoryProvider>
           </LikeProvider>
         </WatchProvider>
       </LibraryProvider>

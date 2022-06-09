@@ -22,6 +22,7 @@ export const HomePage = () => {
           <div className="videocard-list">
             {filterVideo.map((videos) => (
               <VideoCard
+                video={videos}
                 key={videos._id}
                 _id={videos._id}
                 title={videos.title}

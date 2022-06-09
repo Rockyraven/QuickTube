@@ -4,6 +4,7 @@
   margin: 0.5rem;
   background-color: var(--clr-page-bg);
   flex-wrap: wrap;
+  position: relative;
 }
 .video-title-wrapper {
   display: flex;
@@ -87,4 +88,6 @@
   border-radius: 50%;
   background-color: var(--grey);
   color: var(--icon-color);
+  position: relative;
+  z-index: 5;
 }
