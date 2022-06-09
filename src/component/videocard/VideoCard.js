@@ -1,6 +1,8 @@
+import { useVideo } from "context/videoContext";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./videocard.css";
+import axios from "axios";
 
 export const VideoCard = ({
   thumbnail,
@@ -9,10 +11,28 @@ export const VideoCard = ({
   creator,
   views,
   _id,
+  video,
 }) => {
+  const { user } = useVideo();
+
+  const HistoryVideo = async () => {
+    try {
+      const response = await axios.post(
+        "/api/user/history",
+        { video },
+        {
+          headers: {
+            authorization: user.encodedToken,
+          },
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
-      <div className="video-card">
+      <div className="video-card" onClick={HistoryVideo}>
         <Link to={`/watch/${_id}`}>
           <div className="video-image">
             <img src={thumbnail} alt="video thumbnail" />
@@ -24,8 +44,7 @@ export const VideoCard = ({
             <div className="video-title">
               <p className="description">{title}</p>
               <div className="view-text">
-                <span>{views}</span>{" "}
-                <span>{creator}</span>
+                <span>{views}</span> <span>{creator}</span>
               </div>
             </div>
           </div>

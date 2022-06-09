@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
 
 import {
+  HistoryPage,
   HomePage,
   Library,
   LikedPage,
@@ -42,6 +43,7 @@ export const App = () => {
           <Route path="/liked" element={<LikedPage />} />
           <Route path="/watchlater" element={<WatchLater />} />
           <Route path="/library" element={<Library />} />
+          <Route path="/history" element={<HistoryPage/>} />
         </Route>
       </Routes>
     </>

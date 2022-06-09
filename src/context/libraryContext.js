@@ -14,7 +14,7 @@ const LibraryProvider = ({children}) => {
   const [ display, setDisplay ] = useState("none");
   const [ playlistName, setPlayListName ] = useState("");
   const [ library, setLibrary ] = useState([]);
-  const [ getLibraryVideo, setGetLibraryVideo ] = useState({videos: []});
+  const [ getLibraryVideo, setGetLibraryVideo ] = useState([]);
   const [ removePlaylist, setRemovePlaylist] = useState([]);
 
   const createLibraryVideo = async (title) => {
@@ -50,14 +50,13 @@ const LibraryProvider = ({children}) => {
   const getLibraryVideos = async (id) => {
     
     try {
-      console.log(id)
       const response = await axios.get(`/api/user/playlists/${id}`, {
         headers: {
           authorization: user.encodedToken,
         },
       });
-
-      setGetLibraryVideo(response.data.playlist);
+      console.log(response);
+      setGetLibraryVideo(response.data.playlist.videos);
     } catch (error) {
       console.log(error);
     }
@@ -82,15 +81,16 @@ const LibraryProvider = ({children}) => {
 
   const removePlayList = async (playlistId) => {
     try {
-      console.log(playlistId)
-      const response = await axios.delete(`/api/user/playlists//${playlistId}`, {
+      console.log(playlistId);
+      const response = await axios.delete(`/api/user/playlists/${playlistId}`, {
         headers: {
           'authorization': user.encodedToken
         }
       });
-      // setRemovePlaylist(response.data.likes)
+      // setRemovePlaylist(response.data.playlists)
       console.log(response);
       toast.error("Video Removed");
+      setLibrary(response.data.playlists);
     }
     catch(error){
       console.log(error)

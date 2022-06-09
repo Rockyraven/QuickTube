@@ -16,6 +16,7 @@ export const Player = () => {
   const isVideoExist = videoList.find((ele) => ele._id === videoListID);
   const likeVideo = async () => {
     try {
+      console.log(isVideoExist)
       const response = await axios.post(
         "/api/user/likes",
         { video: isVideoExist },

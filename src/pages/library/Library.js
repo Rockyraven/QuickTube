@@ -11,11 +11,12 @@ export const Library = () => {
     library,
     getLibraryVideos,
     getLibraryVideo,
-    removePlaylist,
+    removePlayList
   } = useLibrary();
   useEffect(() => {
     getLibrary();
   }, []);
+  console.log(getLibraryVideo);
   return (
     <>
       <div className="video-listing-container">
@@ -38,7 +39,7 @@ export const Library = () => {
                 key={item._id}
               >
                 {item.title}
-                <button onClick={ removePlaylist}>
+                <button onClick={() => removePlayList(item._id) }>
                   <i className="fa fa-trash"></i>
                 </button>
               </div>
@@ -47,7 +48,7 @@ export const Library = () => {
         )}
 
         <div className="videocard-list">
-          {getLibraryVideo.videos.map((videos) => (
+          {getLibraryVideo?.map((videos) => (
             <RemoveCard
               key={videos._id}
               _id={videos._id}

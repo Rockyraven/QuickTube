@@ -26,7 +26,6 @@ const WatchProvider = ({children}) => {
 
     const removeWatchVideo = async (videoID) => {
       try {
-        console.log(videoID)
         const response = await axios.delete(`/api/user/watchlater/${videoID}`, {
           headers: {
             'authorization': user.encodedToken
