@@ -8,6 +8,7 @@ import axios from "axios";
 import { useLibrary } from "context/libraryContext";
 import { Model } from "component";
 import { toast } from "react-toastify";
+import './player.css'
 
 export const Player = () => {
   const { videoList, user } = useVideo();
@@ -53,8 +54,7 @@ export const Player = () => {
   return (
     <div>
       <iframe
-        width="853"
-        height="480"
+      className="video-watch-card"
         src={`https://www.youtube.com/embed/${isVideoExist.video}`}
         title="YouTube video player"
         frameBorder="0"

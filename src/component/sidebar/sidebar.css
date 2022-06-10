@@ -1,5 +1,5 @@
 .sidebar-container{
-    width: 5rem;
+    width: 12rem;
     flex: 0 0 auto;
     background-color: var(--clr-border-color-3);
 }
@@ -14,7 +14,7 @@
     align-items: center;
 }
 .sidebar-subtitle{
-    display: none;
+    font-size: 1.2rem;
 }
 
 @media only screen and (max-width: 750px) {
@@ -23,6 +23,9 @@
     }
     .sidebar-container{
         width: 5rem;
+    }
+    .sidebar-subtitle{
+        display: none;
     }
 }
 .sidebar-icon{
@@ -41,5 +44,6 @@
         display: flex;
         width: 100%;
         justify-content: space-between;
+        z-index: 1;
     }
 }

@@ -39,7 +39,8 @@
 .search-button{
     padding: 0.9rem;
     background-color: var(--clr-page-bg);
-
+    border-color: var(--icon-color);
+    color: var(--icon-color);
 }
 .login{
     color: var(--icon-color);

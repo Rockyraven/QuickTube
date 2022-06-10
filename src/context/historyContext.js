@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 const historyContext = createContext();
 
 const HistoryProvider = ({children}) => {
+  const { videoList } = useVideo();
     const [ historyVideo, setHistoryVideo ] = useState([]);
     const { user } = useVideo();
 
@@ -29,7 +30,6 @@ const HistoryProvider = ({children}) => {
             },
           });
           setHistoryVideo(response.data.history);
-          console.log(response);
         } catch (error) {
           console.log(error);
         }
@@ -50,8 +50,25 @@ const HistoryProvider = ({children}) => {
         }
       }
 
+      const HistoryVideo = async () => {
+        try {
+          const response = await axios.post(
+            "/api/user/history",
+            { videoList },
+            {
+              headers: {
+                authorization: user.encodedToken,
+              },
+            }
+            );
+            console.log(response);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
     return (
-        <historyContext.Provider value={{getHistory, historyVideo, removeHistory, removeHistoryAll}}>
+        <historyContext.Provider value={{getHistory, historyVideo, removeHistory, removeHistoryAll, HistoryVideo}}>
             {children}
         </historyContext.Provider>
     )
