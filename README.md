@@ -1,70 +1,125 @@
-# Getting Started with Create React App
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# QuickTube
 
-## Available Scripts
+  ### Quicktube is video library Project like Youtube. You can explore and enjoy the song, learn from video 
+  
+  ![](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) 
+![](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)<br><br>
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a1fe7d1f-75e9-4c30-bd3a-8df76d74c08c/deploy-status)](https://app.netlify.com/sites/neos-ui/deploys)
+</div>
 
-In the project directory, you can run:
+![image](https://user-images.githubusercontent.com/89784704/173043394-29e3a91a-92d2-4e96-ac36-d934503b816b.png)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## 🚀 Features It has
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Authentication**
 
-### `npm run build`
+- Guest Log In
+- Log In/Log Out
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  - Sign Up by following the link provided on the Log In page
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![image](https://user-images.githubusercontent.com/89784704/173043550-36a00c51-6871-4e99-9715-75d04600241f.png)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Add Watch Later Page**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- add a Video to your Watch Later
+- remove a specific video from the Watch Later
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+![image](https://user-images.githubusercontent.com/89784704/173043727-d2eef1e6-ae48-4d81-84e0-05f5b1f88fae.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+**History Page**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- clear All history at once
+- remove a specific video from the History
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![image](https://user-images.githubusercontent.com/89784704/173043896-9fdeee48-5848-43f3-bad1-13ead799d27c.png)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+**Create a Playlist**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- create a Playlist
+- add a video to a Playlist
+- delete all Playlist at once
+- delete a specific Playlist
+- remove a video from a Playlist
+- play all videos of a Playlist at once
+- play a specific video from a Playlist
 
-### Deployment
+![image](https://user-images.githubusercontent.com/89784704/173044306-2f28d7c0-a52a-47dc-b8d4-e255f9a88aea.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+**Keyboard Accessible**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- most of the things are keyboard accessible
+- to close options list (opened on click of three dots present on card), use `ESC` key
+
+**Like a Video**
+
+- like a Video
+- remove a specific video from the Liked videos
+
+**Play a Video**
+
+- play a Video, click video card
+- choose a video to play from a specific category, click different chips
+
+**Responsive**
+
+- the app is almost responsive
+
+---
+
+## 🔌 Getting Started
+
+- clone the repository on your local machine with the command below in your terminal, and cd into the **Dekho-Video** folder
+
+```
+git clone (https://github.com/Rockyraven/QuickTube.git)
+
+
+```
+
+- install dependencies (if you are using **yarn** then do with that)
+
+```
+npm install
+```
+
+- create a `.env` file at the root level of the directory (at the level of `package.json`) and create a variable like mentioned below
+
+```
+REACT_APP_JWT_SECRET = <JWT_SECRET_KEY_OF_YOUR_CHOICE>
+```
+
+- start the server
+
+```
+npm start
+```
+
+---
+
+
+
+<div align="center">
+##👨‍💻 Connect with me
+
+<a href="https://www.instagram.com/rockykumar636/"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white"/></a>
+<a href="https://twitter.com/ImRocky7277"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white"/></a>
+<a href="https://www.linkedin.com/in/rocky-abb69921b/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+</div>
