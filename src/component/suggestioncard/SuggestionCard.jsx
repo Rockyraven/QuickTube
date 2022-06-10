@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './suggestion.css'
 import axios from "axios";
+import { useHistory } from "context/historyContext";
 
 export const SuggestionCard = ({
   thumbnail,
@@ -13,26 +14,11 @@ export const SuggestionCard = ({
   _id,
   video
 }) => {
-  const { user } = useVideo();
+  const { HistoryVideo } = useHistory();
 
-  const HistoryVideo = async () => {
-    try {
-      const response = await axios.post(
-        "/api/user/history",
-        { video },
-        {
-          headers: {
-            authorization: user.encodedToken,
-          },
-        }
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
     <>
-      <div className="suggestion-card-wrapper" onClick={HistoryVideo}>
+      <div className="suggestion-card-wrapper" onClick={HistoryVideo }>
         <Link to={`/watch/${_id}`}>
           <div className="suggest-card">
             <div className="suggestion-card-image">

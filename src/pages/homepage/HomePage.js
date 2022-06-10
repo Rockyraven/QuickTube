@@ -1,16 +1,18 @@
 import { useVideo } from "context/videoContext";
 import React from "react";
-import { Sidebar, VideoCard } from "../../component";
+import { Loader, Sidebar, VideoCard } from "../../component";
 import "./homepage.css";
 import Chip from "@mui/material/Chip";
 
 export const HomePage = () => {
 
-  const { carFilterVideo, techFilterVideo, filterVideo, songFilterVideo, javaScriptFilterVideo, allFilterVideo } = useVideo();
+  const { carFilterVideo, techFilterVideo, filterVideo, songFilterVideo, javaScriptFilterVideo, allFilterVideo, isLoading } = useVideo();
+
 
   return (
+
     <>
- 
+    {isLoading? <Loader/> :
       <div className="video-listing-container">
         <Sidebar />
         <div className="wrapping">
@@ -36,6 +38,7 @@ export const HomePage = () => {
           </div>
         </div>
       </div>
+}
     </>
   );
 };

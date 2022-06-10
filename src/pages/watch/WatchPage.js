@@ -1,13 +1,17 @@
-import { Sidebar, SuggestionCard } from "component";
+import { Loader, Sidebar, SuggestionCard } from "component";
 import { useVideo } from "context/videoContext";
 import React from "react";
 import { Outlet } from "react-router-dom";
 import "./watchpage.css";
 
 export const WatchPage = () => {
-  const { videoList } = useVideo();
+  const { videoList, isLoading } = useVideo();
 
   return (
+    <>
+    {isLoading ? (
+      <Loader />
+    ) : (
     <div className="watchpage-container">
       <Sidebar />
       <div className="suggestion-cardlist">
@@ -25,5 +29,7 @@ export const WatchPage = () => {
         ))}
       </div>
     </div>
+)}
+    </>
   );
 };

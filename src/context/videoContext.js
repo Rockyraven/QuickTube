@@ -7,6 +7,7 @@ const videoContext = createContext();
 const VideoProvider = ({ children }) => {
   const [videoList, setVideoList] = useState([]);
   const [filterVideo, setFilterVideo] = useState([]);
+  const [ isLoading, setIsLoading ] = useState(false);
 
   useEffect(() => {
     setFilterVideo(videoList.sort(() => Math.random() - 0.5) );
@@ -21,8 +22,10 @@ const VideoProvider = ({ children }) => {
   useEffect(() => {
     const getVideoData = async () => {
       try {
+        setIsLoading(true);
         const response = await axios.get("/api/videos");
         setVideoList(response.data.videos);
+        setIsLoading(false)
       } catch (error) {
         console.log(error);
       }
@@ -62,7 +65,8 @@ const VideoProvider = ({ children }) => {
         javaScriptFilterVideo,
         carFilterVideo,
         techFilterVideo,
-        allFilterVideo
+        allFilterVideo,
+        isLoading
       }}
     >
       {children}
