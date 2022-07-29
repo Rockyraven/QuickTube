@@ -17,7 +17,8 @@ const HistoryProvider = ({children}) => {
               authorization: user.encodedToken,
             },
           });
-          setHistoryVideo(response.data.history);
+          setHistoryVideo(response.data.history.reverse());
+          console.log(response.data.history)
         } catch (error) {
           console.log(error);
         }
