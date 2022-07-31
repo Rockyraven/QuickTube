@@ -71,6 +71,7 @@ export const Player = () => {
           <p className="title">{isVideoExist.creator}</p>
           <p className="view">{isVideoExist.views}</p>
         </div>
+      </div>
         <div className="watch-link ">
           <div className="like-button link" onClick={likeVideo}>
             {" "}
@@ -90,7 +91,6 @@ export const Player = () => {
             <p>WATCH LATER</p>
           </div>
         </div>
-      </div>
       <p className="video-title">{isVideoExist.description}</p>
     </div>
   );
