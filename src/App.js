@@ -12,6 +12,7 @@ import {
   LikedPage,
   LoginPage,
   Profile,
+  SignUpPage,
   WatchLater,
   WatchPage,
 } from "./pages";
@@ -39,6 +40,7 @@ export const App = () => {
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/signup" element={<SignUpPage/>} />
         <Route element={<ProtectedRoute />}>
           <Route path="/liked" element={<LikedPage />} />
           <Route path="/watchlater" element={<WatchLater />} />
