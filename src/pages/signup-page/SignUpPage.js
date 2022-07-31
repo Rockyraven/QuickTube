@@ -21,10 +21,16 @@ export const SignUpPage = () => {
     email: "",
     password: "",
   };
+  // const errorMsg = "Invalid Data.."
+  const [ errorInput, setErrorInput ] = useState("");
   const [formData, setFormData] = useState(formObj);
   const [confirmPassword, setConfirmPassword] = useState("");
   const submitHandler = () => {
-    if (formData.password.length>6 || formData.password === confirmPassword ) {
+    if(formData.password.length<6 || formData.firstName === "" || formData.lastName === "" || formData.email === "" || formData.password !== confirmPassword  ) {
+      setErrorInput("Invalid Data..")
+    }
+    else {
+      setErrorInput("")
       signUpHandler(formData);
       toast.success("LoggedIn successfully");
     }
@@ -33,6 +39,7 @@ export const SignUpPage = () => {
     <div className="login-page-container">
       <div className="login-wrapper">
         <h1 className="login-tilte">Sign Up</h1>
+        <p className="error-input">{errorInput}</p>
         <input
           type="text"
           id="outlined-password-input"

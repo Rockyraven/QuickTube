@@ -55,3 +55,7 @@
     color: var(--white);
     text-decoration: underline;
 }
+.error-input{
+    font-size: 1.1rem;
+    color: red;
+}
