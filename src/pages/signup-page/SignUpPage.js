@@ -90,7 +90,7 @@ export const SignUpPage = () => {
         >
           Create Account
         </button>
-        <Link to="/login">Already have a account! Login </Link>
+        <Link to="/login"> <p className="new-account">Already have a account! Login</p>  </Link>
       </div>
     </div>
   );

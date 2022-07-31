@@ -47,3 +47,11 @@
 .login-button:hover, .demo-login-button:hover{
     color: var(--icon-color);
 }
+.new-account{
+    font-size: 1.1rem;
+    color: var(--icon-color);
+}
+.new-account:hover{
+    color: var(--white);
+    text-decoration: underline;
+}

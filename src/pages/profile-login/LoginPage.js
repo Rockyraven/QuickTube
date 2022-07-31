@@ -48,8 +48,8 @@ export const LoginPage = () => {
         >
           Login
         </button>
-
-        <Link to="/signup">Create a new account </Link>
+          <div > <Link to="/signup" ><p className="new-account">Create a new account</p>  </Link></div>
+       
       </div>
     </div>
   );
