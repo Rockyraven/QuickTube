@@ -12,4 +12,12 @@
     align-items: center;
     gap: 0.5rem;
     padding: 10px;
+    margin-left: auto;
+  }
+  .like-container{
+    display: flex;
+    margin-left: auto;
+  }
+  .link{
+    cursor: pointer;
   }

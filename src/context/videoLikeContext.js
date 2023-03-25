@@ -20,6 +20,7 @@ const LikeProvider = ({children}) => {
           authorization: user.encodedToken,
         },
       });
+      console.log(response.data.likes)
       setLikedVideo(response.data.likes);
     } catch (error) {
       console.log(error);

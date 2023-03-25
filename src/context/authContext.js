@@ -22,44 +22,51 @@ const AuthProvider = ({ children }) => {
   const loginHandler = async (email, password) => {
     try {
       let formData = JSON.stringify({ email, password });
-      const response = await axios.post("/api/auth/login", formData);
+      console.log(formData);
+      console.log(email, password);
+      const response = await axios.post("http://localhost:5000/user/signin", {
+        "email": "rocky4",
+        "password": "123456"
+    });
+      console.log(response);
       localStorage.setItem(
         "user",
         JSON.stringify({
-          encodedToken: response.data.encodedToken,
-          firstName: response.data.foundUser.firstName,
-          lastName: response.data.foundUser.lastName,
-          email: response.data.foundUser.email,
+          encodedToken: response.data.token,
+          name: response.data.createdUser.name,
+          username: response.data.createdUser.username,
+          email: response.data.createdUser.email,
         })
       );
       setUser({
         encodedToken: response.data.encodedToken,
-        firstName: response.data.foundUser.firstName,
-        lastName: response.data.foundUser.lastName,
-        email: response.data.foundUser.email,
+        name: response.data.createdUser.name,
+        username: response.data.createdUser.username,
+        email: response.data.createdUser.email,
       });
       navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
-
   const signUpHandler = async (formData) => {
     try {
-      const response = await axios.post("/api/auth/signup",formData);
+      const response = await axios.post("http://localhost:5000/user/signup",formData);
+      console.log(response);
+      console.log(response.data.token)
       localStorage.setItem(
         "user",
         JSON.stringify({
-          encodedToken: response.data.encodedToken,
-          firstName: response.data.createdUser.firstName,
-          lastName: response.data.createdUser.lastName,
+          encodedToken: response.data.token,
+          name: response.data.createdUser.name,
+          username: response.data.createdUser.username,
           email: response.data.createdUser.email,
         })
       );
       setUser({
         encodedToken: response.data.encodedToken,
-        firstName: response.data.createdUser.firstName,
-        lastName: response.data.createdUser.lastName,
+        name: response.data.createdUser.name,
+        username: response.data.createdUser.username,
         email: response.data.createdUser.email,
       });
       navigate("/");

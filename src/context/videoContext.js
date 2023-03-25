@@ -23,8 +23,8 @@ const VideoProvider = ({ children }) => {
     const getVideoData = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get("/api/videos");
-        setVideoList(response.data.videos);
+        const response = await axios.get("http://localhost:5000/video");
+        setVideoList(response.data);
         setIsLoading(false)
       } catch (error) {
         console.log(error);

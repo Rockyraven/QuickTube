@@ -3,9 +3,14 @@ import { RemoveCard, Sidebar } from "component";
 import { Link } from "react-router-dom";
 import { useHistory } from "context/historyContext";
 import './history.css'
+import { useVideo } from "context/videoContext";
 
 export const HistoryPage = () => {
     const { getHistory, historyVideo, removeHistory, removeHistoryAll } = useHistory();
+    const {videoList} = useVideo();
+    console.log(videoList);
+    console.log(historyVideo);
+
     useEffect(()=>{
         getHistory()
     },[])
@@ -13,7 +18,7 @@ export const HistoryPage = () => {
     <>
       <div className="video-listing-container">
         <Sidebar />
-        {historyVideo.length === 0 ? (
+        {historyVideo?.length === 0 ? (
             <div className="login-page-container">
           <div className="no-video-present">
               <h1 className="title-text"> You Have Nothing Explore Yet 😢 </h1>

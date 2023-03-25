@@ -1,4 +1,4 @@
-import {createContext, useContext, useState} from 'react'
+import {createContext, useContext, useEffect, useState} from 'react'
 import { useVideo } from './videoContext';
 import axios from "axios";
 import { toast } from 'react-toastify';
@@ -12,17 +12,21 @@ const HistoryProvider = ({children}) => {
 
     const getHistory = async () => {
         try {
-          const response = await axios.get("/api/user/history", {
+          const response = await axios.get("http://localhost:5000/history", {
             headers: {
               authorization: user.encodedToken,
             },
           });
-          setHistoryVideo(response.data.history.reverse());
-          console.log(response.data.history)
+          setHistoryVideo(response.data);
+          console.log(response)
         } catch (error) {
           console.log(error);
         }
       };
+      useEffect(() => {
+        getHistory();
+      },[])
+      // getHistory();
     const removeHistoryAll = async () => {
         try {
           const response = await axios.delete("/api/user/history/all", {
@@ -50,6 +54,19 @@ const HistoryProvider = ({children}) => {
           console.log(error)
         }
       }
+      const createHistory = async (videoID) => {
+        try {
+          const response = await axios.post(`http://localhost:5000/history/${videoID}`,{}, {
+            headers: {
+              'Authorization': user.encodedToken
+            }
+          });
+          setHistoryVideo(response.data.history)
+        }
+        catch(error){
+          console.log(error)
+        }
+      }
 
       const HistoryVideo = async () => {
         try {
@@ -69,7 +86,7 @@ const HistoryProvider = ({children}) => {
       };
 
     return (
-        <historyContext.Provider value={{getHistory, historyVideo, removeHistory, removeHistoryAll, HistoryVideo}}>
+        <historyContext.Provider value={{getHistory, historyVideo, removeHistory, createHistory, removeHistoryAll, HistoryVideo}}>
             {children}
         </historyContext.Provider>
     )

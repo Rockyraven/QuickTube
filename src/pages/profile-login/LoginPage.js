@@ -36,7 +36,7 @@ export const LoginPage = () => {
         <button
           className="demo-login-button"
           onClick={() => {
-            loginHandler("rocky23@gmail.com", "rocky2301");
+            loginHandler("rocky4", "123456");
             toast.success("loggedIn SuccesFully");
           }}
         >

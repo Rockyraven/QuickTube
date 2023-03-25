@@ -16,8 +16,8 @@ export const SignUpPage = () => {
     setLastName,
   } = useAuth();
   const formObj = {
-    firstName: "",
-    lastName: "",
+    name: "",
+    username: "",
     email: "",
     password: "",
   };
@@ -26,7 +26,7 @@ export const SignUpPage = () => {
   const [formData, setFormData] = useState(formObj);
   const [confirmPassword, setConfirmPassword] = useState("");
   const submitHandler = () => {
-    if(formData.password.length<6 || formData.firstName === "" || formData.lastName === "" || formData.email === "" || formData.password !== confirmPassword  ) {
+    if(formData.password.length<6 || formData.name === "" || formData.username === "" || formData.email === "" || formData.password !== confirmPassword  ) {
       setErrorInput("Invalid Data..")
     }
     else {
@@ -46,9 +46,8 @@ export const SignUpPage = () => {
           className="input-box"
           label="user"
           autoComplete="current-password"
-          placeholder="First Name"
-          name="firstName"
-          // value={firstName}
+          placeholder="Name"
+          name="name"
           onInput={(e) => setFormData(prev => ({...prev, [e.target.name]: e.target.value}))}
         />
         <input
@@ -57,8 +56,8 @@ export const SignUpPage = () => {
           className="input-box"
           label="user"
           autoComplete="current-password"
-          placeholder="Last Name"
-          name="lastName"
+          placeholder="Userame"
+          name="username"
           // value={lastName}
           onInput={(e) => setFormData(prev => ({...prev, [e.target.name]: e.target.value}))}
           />

@@ -12,7 +12,7 @@ import "./index.css";
 import { makeServer } from "./server";
 
 // Call make Server
-makeServer();
+// makeServer();
 
 ReactDOM.render(
   <BrowserRouter>
