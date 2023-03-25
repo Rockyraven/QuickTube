@@ -18,7 +18,6 @@ const HistoryProvider = ({children}) => {
             },
           });
           setHistoryVideo(response.data);
-          console.log(response)
         } catch (error) {
           console.log(error);
         }
@@ -47,7 +46,6 @@ const HistoryProvider = ({children}) => {
             }
           });
           setHistoryVideo(response.data.history)
-          console.log(response);
           toast.error("Video Removed");
         }
         catch(error){
@@ -79,7 +77,6 @@ const HistoryProvider = ({children}) => {
               },
             }
             );
-            console.log(response);
         } catch (error) {
           console.log(error);
         }

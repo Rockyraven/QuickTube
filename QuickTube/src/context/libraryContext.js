@@ -55,7 +55,6 @@ const LibraryProvider = ({children}) => {
           authorization: user.encodedToken,
         },
       });
-      console.log(response);
       setGetLibraryVideo(response.data.playlist.videos);
     } catch (error) {
       console.log(error);
@@ -81,14 +80,11 @@ const LibraryProvider = ({children}) => {
 
   const removePlayList = async (playlistId) => {
     try {
-      console.log(playlistId);
       const response = await axios.delete(`/api/user/playlists/${playlistId}`, {
         headers: {
           'authorization': user.encodedToken
         }
       });
-      // setRemovePlaylist(response.data.playlists)
-      console.log(response);
       toast.error("Video Removed");
       setLibrary(response.data.playlists);
     }

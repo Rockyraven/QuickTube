@@ -21,11 +21,9 @@ export const Player = () => {
   const [ isLiked, setIsLiked ] = useState(false);
   useEffect(() => {
     getLikes();
-    // console.log(likeVideo)
   }, []);
   const likeVideo = async () => {
     try {
-      console.log(isVideoExist._id);
       const response = await axios.post(
         "/api/user/likes",
         { video: isVideoExist },
@@ -58,7 +56,6 @@ export const Player = () => {
     }
   };
 
-  console.log(isVideoExist.video);
 
   return (
     <div>

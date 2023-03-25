@@ -4,10 +4,8 @@ const videoModel = require("../model/videoModel");
 exports.createHistory = async (req, res) => {
   const videoId = req.params.videoId;
   const userId = req.userId;
-  console.log(userId);
   try {
     const video = await videoModel.findById(videoId);
-    console.log(video);
     if (!video) {
       throw { error: "there is no video" };
     }
@@ -69,6 +67,4 @@ exports.deleteHistory = async (req, res) => {
 exports.deleteAllHistory = async  (req, res) => {
     // const history = await historyModel.find({userId: req.userId}).remove().exec();
     const history = await historyModel.findOneAndRemove({ userId: req.userId });
-    console.log(req.userId)
-    console.log(history, "kjadc");
 }

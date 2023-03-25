@@ -4,7 +4,6 @@ const videoModel = require("../model/videoModel");
 exports.createLike = async (req, res) => {
   const videoId = req.params.videoId;
   const userId = req.userId;
-  console.log(userId);
   try {
     const video = await videoModel.findById(videoId);
     if (!video) {
@@ -32,7 +31,6 @@ exports.deleteLike = async (req, res) => {
     const videoId = req.params.videoId;
     try {
         const like = await likeModel.findByIdAndRemove(videoId);
-        console.log(null);
         res.status(202).json(like);
     } catch (error) {
         console.log(error);

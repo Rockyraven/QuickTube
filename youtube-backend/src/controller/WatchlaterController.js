@@ -42,7 +42,6 @@ exports.deleteWatchlater = async (req, res) => {
     console.log(videoId);
     try {
         const watchlater = await watchlaterModel.findByIdAndRemove(videoId);
-        // console.log(historyModel.map(item => item.videoId)); 
         res.status(202).json(watchlater);
     } catch (error) {
         console.log(error);
