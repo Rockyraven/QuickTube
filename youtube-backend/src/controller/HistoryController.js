@@ -28,25 +28,11 @@ exports.createHistory = async (req, res) => {
 };
 
 exports.getHistoryVideos = async (req, res) => {
-  //   try {
-  //     const history = await historyModel.find({ userId: req.userId });
-  //     const videoIds = history.map(item => item.videoId);
-  //     const videos = await videoModel.find({_id: [videoIds]})
-  //     console.log(videos);
-  //         // console.log(video);
-  //         // if(video){
-  //         //     videos.push(video);
-  //         // }
-  //         console.log(history.map(item => JSON.stringify(item.videoId)));
-  //     res.status(200).json(history);
-  //   } catch (error) {
-  //     console.log(error);
-  //     res.status(500).json({ messgae: "something went wrong" });
-  //   }
-
   try {
     const history = await historyModel.find({ userId: req.userId });
-    res.status(200).json(history);
+    const videosId = history.map(({ videoId }) => videoId);
+    const videos = await videoModel.find({ _id: videosId });
+    res.status(200).json(videos);
   } catch (error) {
     console.log(error);
     res.status(500).json({ messgae: "something went wrong" });
@@ -54,17 +40,17 @@ exports.getHistoryVideos = async (req, res) => {
 };
 
 exports.deleteHistory = async (req, res) => {
-    const historyId = req.params.id;
-    try {
-        const history = await historyModel.findByIdAndRemove(historyId);
-        res.status(202).json(history);
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({messgae: "something went wrong"});
-    }
-}
+  const historyId = req.params.id;
+  try {
+    const history = await historyModel.findByIdAndRemove(historyId);
+    res.status(202).json(history);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ messgae: "something went wrong" });
+  }
+};
 
-exports.deleteAllHistory = async  (req, res) => {
-    // const history = await historyModel.find({userId: req.userId}).remove().exec();
-    const history = await historyModel.findOneAndRemove({ userId: req.userId });
-}
+exports.deleteAllHistory = async (req, res) => {
+  // const history = await historyModel.find({userId: req.userId}).remove().exec();
+  const history = await historyModel.findOneAndRemove({ userId: req.userId });
+};
