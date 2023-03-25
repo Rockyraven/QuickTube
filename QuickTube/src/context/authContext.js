@@ -22,13 +22,10 @@ const AuthProvider = ({ children }) => {
   const loginHandler = async (email, password) => {
     try {
       let formData = JSON.stringify({ email, password });
-      console.log(formData);
-      console.log(email, password);
       const response = await axios.post("http://localhost:5000/user/signin", {
         "email": "rocky4",
         "password": "123456"
     });
-      console.log(response);
       localStorage.setItem(
         "user",
         JSON.stringify({
@@ -52,8 +49,6 @@ const AuthProvider = ({ children }) => {
   const signUpHandler = async (formData) => {
     try {
       const response = await axios.post("http://localhost:5000/user/signup",formData);
-      console.log(response);
-      console.log(response.data.token)
       localStorage.setItem(
         "user",
         JSON.stringify({

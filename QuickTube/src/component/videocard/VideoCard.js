@@ -27,7 +27,6 @@ export const VideoCard = ({
           },
         }
       );
-      console.log(response);
     } catch (error) {
       console.log(error);
     }

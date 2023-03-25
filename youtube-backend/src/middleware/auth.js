@@ -4,7 +4,6 @@ const { model } = require("mongoose");
 const auth = (req, res, next) => {
     try{
         let token = req.headers.authorization;
-        console.log(req.headers, "token");
         if(token){
             let user = jwt.verify(token, "SECRET_KEY");
             req.userId = user.id;
