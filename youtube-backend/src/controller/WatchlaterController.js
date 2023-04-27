@@ -14,7 +14,7 @@ exports.createWatchlater = async (req, res) => {
       return res.status(400).json({ message: "user Already exist" });
     }
     const watchlater = await watchlaterModel.create({
-      videoId: videoId,
+      video: videoId,
       userId: userId,
     }); 
     if (!watchlater) {
@@ -29,8 +29,12 @@ exports.createWatchlater = async (req, res) => {
 
 exports.getWatchlater = async(req,res) => {
     try {
-        const watchLater = await watchlaterModel.find({ userId: req.userId });
-        res.status(200).json(watchLater);
+        const watchLater = await watchlaterModel
+        .where("userId")
+        .equals(req.userId)
+        .populate("video");
+  
+      res.status(200).json(watchLater);
       } catch (error) {
         console.log(error);
         res.status(500).json({ messgae: "something went wrong" });

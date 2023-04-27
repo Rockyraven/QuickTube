@@ -1,14 +1,22 @@
 const mongoose = require("mongoose");
+const userModel = require("./userModel");
+const videoModel = require("./videoModel");
 
 const playListSchema = mongoose.Schema({
-    videoId: {
-        type: mongoose.Schema.Types.ObjectId,
+    videos: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: videoModel,
+        default: []
+    },
+    playListName: {
+        type: String,
         required: true
     },
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
-    },
+        required: true,
+        ref: userModel
+    }
    
 }, {timestamps: true}) 
 

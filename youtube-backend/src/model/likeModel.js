@@ -1,15 +1,20 @@
 const mongoose = require("mongoose");
+const userModel = require("./userModel");
+const videoModel = require("./videoModel");
 
-const likeSchema = mongoose.Schema({
-    videoId: {
+const likeSchema = mongoose.Schema( {
+      video: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
-    },
-    userId: {
+        required: true,
+        ref: videoModel,
+      },
+      userId: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
+        required: true,
+        ref: userModel,
+      },
     },
-   
-}, {timestamps: true}) 
+    { timestamps: true }
+  );
 
 module.exports = mongoose.model("likes", likeSchema)

@@ -49,7 +49,7 @@ const signin = async (req, res) => {
             return res.status(400).json({message: "Invalid Credentail"})
         }
         const token = jwt.sign({email: existingUser.email, id: existingUser._id}, "SECRET_KEY");
-        res.status(201).json({token: token, createdUser: {username: existingUser.email, password: existingUser.password}})
+        res.status(201).json({token: token, createdUser: {username: existingUser.username, name: existingUser.name, email: existingUser.email, password: existingUser.password}})
     }
     catch(error){
         console.log(error);

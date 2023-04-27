@@ -9,12 +9,13 @@ exports.createHistory = async (req, res) => {
     if (!video) {
       throw { error: "there is no video" };
     }
-    const existHistory = await historyModel.findOne({ videoId: videoId });
+    const existHistory = await historyModel.findOne({ _id: videoId });
+    console.log(videoId);
     if (existHistory) {
       return res.status(400).json({ message: "user Already exist" });
     }
     const history = await historyModel.create({
-      videoId: videoId,
+      video: videoId,
       userId: userId,
     });
     if (!history) {
@@ -29,10 +30,12 @@ exports.createHistory = async (req, res) => {
 
 exports.getHistoryVideos = async (req, res) => {
   try {
-    const history = await historyModel.find({ userId: req.userId });
-    const videosId = history.map(({ videoId }) => videoId);
-    const videos = await videoModel.find({ _id: videosId });
-    res.status(200).json(videos);
+    const history = await historyModel
+      .where("userId")
+      .equals(req.userId)
+      .populate("video");
+
+    res.status(200).json(history);
   } catch (error) {
     console.log(error);
     res.status(500).json({ messgae: "something went wrong" });
@@ -41,6 +44,7 @@ exports.getHistoryVideos = async (req, res) => {
 
 exports.deleteHistory = async (req, res) => {
   const historyId = req.params.id;
+  console.log(historyId,"kjca");
   try {
     const history = await historyModel.findByIdAndRemove(historyId);
     res.status(202).json(history);
@@ -51,6 +55,7 @@ exports.deleteHistory = async (req, res) => {
 };
 
 exports.deleteAllHistory = async (req, res) => {
-  // const history = await historyModel.find({userId: req.userId}).remove().exec();
-  const history = await historyModel.findOneAndRemove({ userId: req.userId });
+  const history = await historyModel.deleteMany({});
+  res.status(500).json({message: "All History deleted"});
+  
 };

@@ -17,6 +17,14 @@ const VideoSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    thumbnail: {
+        type: String,
+        default: ""
+    },
+    chanel_pic: {
+        type: String,
+        default: ""
+    },
     creator: {
         type: String,
         required: true

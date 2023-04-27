@@ -14,7 +14,7 @@ exports.createLike = async (req, res) => {
       return res.status(400).json({ message: "user Already exist" });
     }
     const like = await likeModel.create({
-      videoId: videoId,
+      video: videoId,
       userId: userId,
     });
     if (!like) {
@@ -27,11 +27,29 @@ exports.createLike = async (req, res) => {
   }
 };
 
+exports.getLikeVideos = async (req, res) => {
+  try {
+    const like = await likeModel
+    .where("userId")
+    .equals(req.userId)
+    .populate("video");
+
+  res.status(200).json(like);
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ messgae: "something went wrong" });
+  }
+};
+
 exports.deleteLike = async (req, res) => {
     const videoId = req.params.videoId;
     try {
         const like = await likeModel.findByIdAndRemove(videoId);
-        res.status(202).json(like);
+        const videosId = like.map(({ videoId }) => videoId);
+        const videos = await videoModel.find({ _id: videosId });
+        console.log(videos)
+        res.status(202).json(videos);
     } catch (error) {
         console.log(error);
         res.status(500).json({messgae: "something went wrong"});

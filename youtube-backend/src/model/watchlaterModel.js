@@ -1,15 +1,20 @@
 const mongoose = require("mongoose");
+const userModel = require("./userModel");
+const videoModel = require("./videoModel");
 
 const watchlaterSchema = mongoose.Schema({
-    videoId: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true
-    },
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true
-    },
-   
-}, {timestamps: true}) 
-
+    
+        video: {
+          type: mongoose.Schema.Types.ObjectId,
+          required: true,
+          ref: videoModel,
+        },
+        userId: {
+          type: mongoose.Schema.Types.ObjectId,
+          required: true,
+          ref: userModel,
+        },
+      },
+      { timestamps: true }
+    );
 module.exports = mongoose.model("watchlater", watchlaterSchema)
