@@ -14,23 +14,7 @@ export const VideoCard = ({
   _id,
   video,
 }) => {
-  const { user } = useVideo();
   const {createHistory} = useHistory();
-
-  const HistoryVideo = async (videoID) => {
-    try {
-      const response = await axios.post(
-        `http://localhost:5000/history/${videoID}`,
-        {
-          headers: {
-            authorization: user.encodedToken,
-          },
-        }
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
     <>
       <div className="video-card" onClick={() => createHistory(_id)}>

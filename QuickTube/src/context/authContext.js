@@ -22,10 +22,8 @@ const AuthProvider = ({ children }) => {
   const loginHandler = async (email, password) => {
     try {
       let formData = JSON.stringify({ email, password });
-      const response = await axios.post("http://localhost:5000/user/signin", {
-        "email": "rocky4",
-        "password": "123456"
-    });
+      console.log(formData);
+      const response = await axios.post("http://localhost:5000/user/signin", {"email":"rocky4","password":"123456"});
       localStorage.setItem(
         "user",
         JSON.stringify({
@@ -35,8 +33,9 @@ const AuthProvider = ({ children }) => {
           email: response.data.createdUser.email,
         })
       );
+      console.log(response)
       setUser({
-        encodedToken: response.data.encodedToken,
+        encodedToken: response.data.token,
         name: response.data.createdUser.name,
         username: response.data.createdUser.username,
         email: response.data.createdUser.email,

@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../videocard/videocard.css";
-import axios from "axios";
-import { useVideo } from "context/videoContext";
+import { useHistory } from "context/historyContext";
 
 export const RemoveCard = ({
   thumbnail,
@@ -11,37 +10,23 @@ export const RemoveCard = ({
   creator,
   views,
   _id,
+  id,
   removeFn,
   video
 }) => {
-  const { user } = useVideo();
 
-  const HistoryVideo = async () => {
-    try {
-      const response = await axios.post(
-        "/api/user/history",
-        { video },
-        {
-          headers: {
-            authorization: user.encodedToken,
-          },
-        }
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const {removeHistory} = useHistory();
   return (
     <>
       <div className="video-card" >
         <Link to={`/watch/${_id}`} >
           
-          <div className="video-image" onClick={HistoryVideo}>
+          <div className="video-image">
             <img src={thumbnail} alt="video thumbnail" />
           </div>
         </Link>
           <div className="video-title-wrapper" >
-            <div className="video-image" onClick={HistoryVideo}>
+            <div className="video-image">
               <img src={chanel_pic} alt="" />
             </div>
             <div className="video-title">
@@ -50,7 +35,7 @@ export const RemoveCard = ({
               <p className="view">{views} view</p>
             </div>
             
-            <p className="delete-button" onClick={() => removeFn(_id)}>
+            <p className="delete-button" onClick={() => removeFn(id)}>
               {" "}
               <i className="fa fa-trash"></i>
             </p>

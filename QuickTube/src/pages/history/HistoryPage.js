@@ -3,12 +3,9 @@ import { RemoveCard, Sidebar } from "component";
 import { Link } from "react-router-dom";
 import { useHistory } from "context/historyContext";
 import './history.css'
-import { useVideo } from "context/videoContext";
 
 export const HistoryPage = () => {
     const { getHistory, historyVideo, removeHistory, removeHistoryAll } = useHistory();
-    const {videoList} = useVideo();
-    console.log(videoList);
     console.log(historyVideo);
 
     useEffect(()=>{
@@ -33,7 +30,7 @@ export const HistoryPage = () => {
           <button onClick={removeHistoryAll} className="removeall">removeAll <i className="fa fa-trash"></i></button>
           </div>
           <div className="videocard-list">
-            {historyVideo.map((videos) => (
+            {historyVideo?.map((videos) => (
               <RemoveCard
                 key={videos._id}
                 removeFn={removeHistory}
@@ -43,6 +40,7 @@ export const HistoryPage = () => {
                 creator={videos.creator}
                 chanel_pic={videos.chanel_pic}
                 thumbnail={videos.thumbnail}
+                id={videos.id}
               />
             ))}
           </div>

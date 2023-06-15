@@ -8,6 +8,7 @@ import { useVideo } from "context/videoContext";
 export const LikedPage = () => {
   const { likedVideo, getLikes, removeLike } = useLike();
   const { isLoading } = useVideo();
+  console.log(likedVideo);
   useEffect(() => {
     getLikes();
   }, []);
@@ -18,7 +19,7 @@ export const LikedPage = () => {
       ) : (
         <div className="video-listing-container">
           <Sidebar />
-          {likedVideo.length === 0 ? (
+          {likedVideo?.length === 0 ? (
             <div className="login-page-container">
               <div className="no-video-present">
                 <h1 className="title-text"> There is no liked Video 😢 </h1>
@@ -29,7 +30,7 @@ export const LikedPage = () => {
             </div>
           ) : (
             <div className="videocard-list">
-              {likedVideo.map((videos) => (
+              {likedVideo?.map((videos) => (
                 <RemoveCard
                   key={videos._id}
                   removeFn={removeLike}
@@ -39,6 +40,7 @@ export const LikedPage = () => {
                   creator={videos.creator}
                   chanel_pic={videos.chanel_pic}
                   thumbnail={videos.thumbnail}
+                  id={videos.id}
                 />
               ))}
             </div>

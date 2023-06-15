@@ -6,14 +6,6 @@ import { Link } from "react-router-dom";
 export const SignUpPage = () => {
   const {
     signUpHandler,
-    email,
-    setEmail,
-    setPassword,
-    password,
-    lastName,
-    firstName,
-    setFirstName,
-    setLastName,
   } = useAuth();
   const formObj = {
     name: "",
@@ -58,7 +50,6 @@ export const SignUpPage = () => {
           autoComplete="current-password"
           placeholder="Userame"
           name="username"
-          // value={lastName}
           onInput={(e) => setFormData(prev => ({...prev, [e.target.name]: e.target.value}))}
           />
         <input

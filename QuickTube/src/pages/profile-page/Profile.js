@@ -19,7 +19,7 @@ export const Profile = () => {
       <div className="login-page-container">
         <div className="logout-section">
           <p className="login-tilte">
-            Name: {user.firstName} {user.lastName}
+            Name: {user.name} 
           </p>
           <p className="login-tilte">Email: {user.email}</p>
           <button className="login-button" onClick={logoutHandler }>

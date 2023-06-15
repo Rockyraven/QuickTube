@@ -15,12 +15,18 @@ const LikeProvider = ({children}) => {
 
   const getLikes = async () => {
     try {
-      const response = await axios.get("/api/user/likes", {
+      const response = await axios.get("http://localhost:5000/like", {
         headers: {
           authorization: user.encodedToken,
         },
       });
-      setLikedVideo(response.data.likes);
+      console.log(response);
+      var likeId = response.data.map((item) => item._id);
+      var video = response.data.map((item) => item.video);
+      for (let i = 0; i < video.length; i++) {
+        video[i].id = likeId[i];
+      }
+      setLikedVideo(video);
     } catch (error) {
       console.log(error);
     }
@@ -28,13 +34,27 @@ const LikeProvider = ({children}) => {
  
   const removeLike = async (videoID) => {
     try {
-      const response = await axios.delete(`/api/user/likes/${videoID}`, {
+      const response = await axios.delete(`http://localhost:5000/like/${videoID}`, {
         headers: {
           'authorization': user.encodedToken
         }
       });
-      setLikedVideo(response.data.likes)
-      toast.error("Video Removed");
+      toast.error("Liked Video Removed")
+    }
+    catch(error){
+      console.log(error)
+    }
+    window.location.reload();
+  }
+  
+  const createLike = async (videoID) => {
+    try {
+      const response = await axios.post(`http://localhost:5000/like/${videoID}`,{}, {
+        headers: {
+          'Authorization': user.encodedToken
+        }
+      });
+      toast.success("Video Liked");
     }
     catch(error){
       console.log(error)
@@ -42,7 +62,7 @@ const LikeProvider = ({children}) => {
   }
  
     return(
-        <videoLikeContext.Provider value={{ removeLike, likedVideo, getLikes }}>
+        <videoLikeContext.Provider value={{ removeLike, likedVideo, getLikes, createLike }}>
             {children}
         </videoLikeContext.Provider>
     )
