@@ -9,7 +9,6 @@ export const WatchLater = () => {
   useEffect(()=>{
     getWatchLater();
   },[])
-  console.log(watchLater);
 
   return (
     <div className="video-listing-container">

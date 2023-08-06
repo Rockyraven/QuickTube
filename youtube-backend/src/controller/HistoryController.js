@@ -9,8 +9,8 @@ exports.createHistory = async (req, res) => {
     if (!video) {
       throw { error: "there is no video" };
     }
-    const existHistory = await historyModel.findOne({ _id: videoId });
-    console.log(videoId);
+    const existHistory = await historyModel.findOne({video :{ _id : videoId}});
+    console.log(existHistory);
     if (existHistory) {
       return res.status(400).json({ message: "user Already exist" });
     }
@@ -47,7 +47,7 @@ exports.deleteHistory = async (req, res) => {
   console.log(historyId,"kjca");
   try {
     const history = await historyModel.findByIdAndRemove(historyId);
-    res.status(202).json(history);
+    res.status(202).json({ messgae: "History Deleted"});
   } catch (error) {
     console.log(error);
     res.status(500).json({ messgae: "something went wrong" });
@@ -56,6 +56,6 @@ exports.deleteHistory = async (req, res) => {
 
 exports.deleteAllHistory = async (req, res) => {
   const history = await historyModel.deleteMany({});
-  res.status(500).json({message: "All History deleted"});
+  res.status(202).json({message: "All History deleted"});
   
 };

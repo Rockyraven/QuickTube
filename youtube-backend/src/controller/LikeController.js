@@ -9,7 +9,7 @@ exports.createLike = async (req, res) => {
     if (!video) {
       throw { error: "there is no video" };
     }
-    const existLike = await likeModel.findOne({ videoId: videoId });
+    const existLike = await likeModel.findOne({ video: { _id: videoId } });
     if (existLike) {
       return res.status(400).json({ message: "user Already exist" });
     }
@@ -30,12 +30,11 @@ exports.createLike = async (req, res) => {
 exports.getLikeVideos = async (req, res) => {
   try {
     const like = await likeModel
-    .where("userId")
-    .equals(req.userId)
-    .populate("video");
+      .where("userId")
+      .equals(req.userId)
+      .populate("video");
 
-  res.status(200).json(like);
-
+    res.status(200).json(like);
   } catch (error) {
     console.log(error);
     res.status(500).json({ messgae: "something went wrong" });
@@ -43,15 +42,12 @@ exports.getLikeVideos = async (req, res) => {
 };
 
 exports.deleteLike = async (req, res) => {
-    const videoId = req.params.videoId;
-    try {
-        const like = await likeModel.findByIdAndRemove(videoId);
-        const videosId = like.map(({ videoId }) => videoId);
-        const videos = await videoModel.find({ _id: videosId });
-        console.log(videos)
-        res.status(202).json(videos);
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({messgae: "something went wrong"});
-    }
-}
+  const videoId = req.params.videoId;
+  try {
+    const like = await likeModel.findByIdAndRemove(videoId);
+    res.status(202).json(like);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ messgae: "something went wrong" });
+  }
+};

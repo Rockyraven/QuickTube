@@ -17,7 +17,6 @@ const HistoryProvider = ({ children }) => {
           authorization: user.encodedToken,
         },
       });
-      console.log(response);
       var historyId = response.data.map((item) => item._id);
       var video = response.data.map((item) => item.video);
       for (let i = 0; i < video.length; i++) {
@@ -33,19 +32,18 @@ const HistoryProvider = ({ children }) => {
   const removeHistoryAll = async () => {
     try {
       const response = await axios.delete(
-        "http://localhost:5000/history/deleteall",
+        "http://localhost:5000/historydeleteAll",
         {
           headers: {
             authorization: user.encodedToken,
           },
         }
       );
-      console.log(response);
+      getHistory();
+      toast.error(response.data.message);
     } catch (error) {
       console.log(error);
     }
-    window.location.reload(false);
-    toast.error("All History video deleted");
   };
 
   // Delete History Video API function
@@ -59,12 +57,12 @@ const HistoryProvider = ({ children }) => {
           },
         }
       );
-      console.log(response);
-      toast.error("History Video Removed");
+      console.log(response.data);
+      setHistoryVideo(prev => prev.filter(item => item.id !== videoID));
+      toast.error("History Deleted");
     } catch (error) {
       console.log(error);
     }
-    window.location.reload(false);
   };
 
   // Create History Video API call funtion

@@ -3,10 +3,10 @@ const auth = require("../middleware/auth");
 const {getHistoryVideos, createHistory, deleteHistory, deleteAllHistory} = require("../controller/HistoryController")
 const historyRouter = express.Router();
 
-historyRouter.get("/",auth, getHistoryVideos);
-historyRouter.post("/:videoId", auth, createHistory)
-historyRouter.delete("/:id", auth, deleteHistory)
-// historyRouter.delete("/deleteall",auth, deleteAllHistory)
+historyRouter.get("/history",auth, getHistoryVideos);
+historyRouter.post("/history/:videoId", auth, createHistory)
+historyRouter.delete("/history/:id", auth, deleteHistory)
+historyRouter.delete("/historydeleteAll",auth, deleteAllHistory)
 
 module.exports = historyRouter;
 

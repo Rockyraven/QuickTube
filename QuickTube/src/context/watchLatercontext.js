@@ -35,11 +35,11 @@ const WatchProvider = ({ children }) => {
           authorization: user.encodedToken,
         },
       });
+      setWatchLater(prev => prev.filter(item => item.id !== videoID));
       toast.error("Video Removed");
     } catch (error) {
       console.log(error);
     }
-    window.location.reload(false);
   };
 
   const createWatchlater = async (videoID) => {

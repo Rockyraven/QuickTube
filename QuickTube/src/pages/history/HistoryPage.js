@@ -6,10 +6,9 @@ import './history.css'
 
 export const HistoryPage = () => {
     const { getHistory, historyVideo, removeHistory, removeHistoryAll } = useHistory();
-    console.log(historyVideo);
 
     useEffect(()=>{
-        getHistory()
+        getHistory();
     },[])
   return (
     <>
@@ -26,8 +25,8 @@ export const HistoryPage = () => {
           </div>
         ) : (
           <>
-          <div className="playlists">
-          <button onClick={removeHistoryAll} className="removeall">removeAll <i className="fa fa-trash"></i></button>
+          <div className="playlists" onClick={removeHistoryAll}>
+          <button  className="removeall">removeAll <i className="fa fa-trash"></i></button>
           </div>
           <div className="videocard-list">
             {historyVideo?.map((videos) => (

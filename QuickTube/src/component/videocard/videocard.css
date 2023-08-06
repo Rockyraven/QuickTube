@@ -90,4 +90,5 @@
   color: var(--icon-color);
   position: relative;
   z-index: 5;
+  cursor: pointer;
 }

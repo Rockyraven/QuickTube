@@ -20,7 +20,6 @@ const LikeProvider = ({children}) => {
           authorization: user.encodedToken,
         },
       });
-      console.log(response);
       var likeId = response.data.map((item) => item._id);
       var video = response.data.map((item) => item.video);
       for (let i = 0; i < video.length; i++) {
@@ -39,12 +38,12 @@ const LikeProvider = ({children}) => {
           'authorization': user.encodedToken
         }
       });
+      setLikedVideo((prev => prev.filter(item => item.id !== videoID)));
       toast.error("Liked Video Removed")
     }
     catch(error){
       console.log(error)
     }
-    window.location.reload();
   }
   
   const createLike = async (videoID) => {
@@ -54,6 +53,7 @@ const LikeProvider = ({children}) => {
           'Authorization': user.encodedToken
         }
       });
+      console.log(response);
       toast.success("Video Liked");
     }
     catch(error){

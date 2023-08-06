@@ -9,7 +9,7 @@ exports.createWatchlater = async (req, res) => {
     if (!video) {
       throw { error: "there is no video" };
     }
-    const existWatchlater = await watchlaterModel.findOne({ videoId: videoId });
+    const existWatchlater = await watchlaterModel.findOne({video :{ _id : videoId}});
     if (existWatchlater) {
       return res.status(400).json({ message: "user Already exist" });
     }

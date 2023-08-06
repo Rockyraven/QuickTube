@@ -19,17 +19,18 @@ const VideoProvider = ({ children }) => {
       : null
   );
 
+  const getVideoData = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.get("http://localhost:5000/video");
+      setVideoList(response.data);
+      setIsLoading(false)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    const getVideoData = async () => {
-      try {
-        setIsLoading(true);
-        const response = await axios.get("http://localhost:5000/video");
-        setVideoList(response.data);
-        setIsLoading(false)
-      } catch (error) {
-        console.log(error);
-      }
-    };
     getVideoData();
   }, []);
 
@@ -66,7 +67,8 @@ const VideoProvider = ({ children }) => {
         carFilterVideo,
         techFilterVideo,
         allFilterVideo,
-        isLoading
+        isLoading,
+        setVideoList
       }}
     >
       {children}
