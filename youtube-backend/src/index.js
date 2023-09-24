@@ -10,20 +10,19 @@ const userRouter = require("./router/userRoutes");
 const watchlaterRouter = require("./router/watchlaterRoutes");
 const videoRouter = require("./router/videoRoutes");
 const videoModel = require("./model/videoModel");
+const playListRouter = require("./router/playlistRoutes");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
-// app.use((req, res, next) => {
-//   console.log("HTTP MEthod - " + req.method + " , URL " + req.url);
-//   next();
-// });
+const PORT = 5000
 
 app.use("/user", userRouter);
 app.use("/", historyRouter);
 app.use("/watchlater", watchlaterRouter);
 app.use("/like", likeRouter);
-app.use("/video", videoRouter);
+app.use("/", videoRouter);
+app.use("/playlist", playListRouter);
 
 mongoose
   .connect(
@@ -36,6 +35,6 @@ mongoose
     console.log(error);
   });
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
   console.log("Server is started");
 });

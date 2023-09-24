@@ -29,6 +29,16 @@ const VideoProvider = ({ children }) => {
       console.log(error);
     }
   };
+ 
+  const getSearchVideo = async (link) => {
+    try {
+        const res = await axios.get(`http://localhost:5000/search?title=${link}`);
+        setVideoList(res.data.myData);
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
     getVideoData();
@@ -68,7 +78,8 @@ const VideoProvider = ({ children }) => {
         techFilterVideo,
         allFilterVideo,
         isLoading,
-        setVideoList
+        setVideoList,
+        getSearchVideo
       }}
     >
       {children}

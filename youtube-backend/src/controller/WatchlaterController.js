@@ -43,7 +43,6 @@ exports.getWatchlater = async(req,res) => {
 
 exports.deleteWatchlater = async (req, res) => {
     const videoId = req.params.videoId;
-    console.log(videoId);
     try {
         const watchlater = await watchlaterModel.findByIdAndRemove(videoId);
         res.status(202).json(watchlater);

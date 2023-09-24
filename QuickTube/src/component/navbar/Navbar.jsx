@@ -5,7 +5,7 @@ import "./navbar.css";
 import LoginIcon from '@mui/icons-material/Login';
 
 export const Navbar = () => {
-  const {user} = useVideo();
+  const {user, getSearchVideo} = useVideo();
   return (
     <>
       <div className="navbar-container">
@@ -20,10 +20,8 @@ export const Navbar = () => {
             type="text"
             className="search-input-box"
             placeholder=" Seach for latest video.."
+            onInput={(e) => getSearchVideo(e.target.value)}
           />
-          <button className="search-button">
-            <i className="fa fa-search"></i>
-          </button>
         </div>
         <div className="login-section">
           {user? <Link to="/profile" className="login">

@@ -1,7 +1,9 @@
 const express = require("express");
-const { getVideo } = require("../controller/VideoController");
+const { getVideo, getSearch } = require("../controller/VideoController");
+const videoModel = require("../model/videoModel");
 const videoRouter = express.Router();
 
-videoRouter.get("/", getVideo);
+videoRouter.get("/video", getVideo);
+videoRouter.get("/search", getSearch)
 
 module.exports = videoRouter;
