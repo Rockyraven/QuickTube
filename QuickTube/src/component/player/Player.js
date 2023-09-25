@@ -26,7 +26,6 @@ export const Player = ({_id}) => {
   const {createWatchlater} = useWatchLater();
   const {createLike} = useLike();
 
-  console.log(isVideoExist);
 
   return (
     <div>

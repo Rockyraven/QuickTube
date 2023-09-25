@@ -2,16 +2,16 @@ const express = require("express");
 const playListModel = require("../model/playListModel");
 const videoModel = require("../model/videoModel");
 
-// const getPlayList = async(req,res) => {
-//     try {
-//         const playList = await playListModel.find({});
+exports.getPlayList = async(req,res) => {
+    try {
+        const playList = await playListModel.find({});
   
-//       res.status(200).json(playList);
-//       } catch (error) {
-//         console.log(error);
-//         res.status(500).json({ messgae: "something went wrong" });
-//       }
-// }
+      res.status(200).json(playList);
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ messgae: "something went wrong" });
+      }
+}
 
 exports.creatPlayList = async (req, res) => {
   const { playListName, video } = req.body;
@@ -33,23 +33,99 @@ exports.creatPlayList = async (req, res) => {
   }
 };
 
-exports.sendVideoToPlayList = async (req, res) => {
-    const playListId = req.params.playListId;
-    const videoId = req.params.videoId;
-    // console.log(playListId, videoId);
-    try {
-        const findPlayList = await playListModel.findById(playListId);
-        const video =  await videoModel.findById(videoId);
-        // console.log(findPlayList.video, video);
-        const final = findPlayList.video.push([video]);
-        console.log(final, [video]);
-        res.status(201).json({final})
-    } catch (error) {
-        
+exports.addVideoToPlaylist = async (req, res) => {
+  const { playlistId, videoId } = req.body;
+
+  try {
+    // Find the playlist by ID
+    const playlist = await playListModel.findById(playlistId);
+
+    if (!playlist) {
+      return res.status(404).json({ error: 'Playlist not found' });
     }
+
+    // Find the video by ID
+    const video = await videoModel.findById(videoId);
+    console.log(video);
+
+    if (!video) {
+      return res.status(404).json({ error: 'Video not found' });
+    }
+
+    // Add the video to the playlist
+    playlist.videos.push(video);
+
+    await playlist.save();
+    console.log(playlist);
+
+    return res.status(200).json(playlist);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Error adding video to playlist' });
+  }
+};
+
+exports.getPlaylistWithVideos = async (req, res) => {
+  const playlistId  = req.params.playlistId;
+
+  try {
+    // Populate the videos array in the playlist
+    const playlist = await playListModel.findById(playlistId).populate('videos');
+    console.log(playlist, playlistId);
+    if (!playlist) {
+      return res.status(404).json({ error: 'Playlist not found' });
+    }
+
+    return res.status(200).json(playlist);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Error fetching playlist' });
+  }
+};
+
+exports.deletePlaylist = async (req, res) => {
+  const playlistId = req.params.playlistId;
+
+  try {
+    const playList = await playListModel.findByIdAndRemove(playlistId);
+    console.log(playlistId, playList)
+    res.status(202).json({ messgae: "PlayList Deleted", playList});
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ messgae: "something went wrong" });
+  }
 }
 
+exports.deleteVideoToPlaylist = async (req, res) => {
+  const { playlistId, videoId } = req.body;
+
+  try {
+    // Find the playlist by ID
+    const playlist = await playListModel.findById(playlistId);
+
+    if (!playlist) {
+      return res.status(404).json({ error: 'Playlist not found' });
+    }
+
+    // Find the video by ID
+    const video = await videoModel.findById(videoId);
+    console.log(video);
+
+    if (!video) {
+      return res.status(404).json({ error: 'Video not found' });
+    }
+
+    // Add the video to the playlist
+    playlist.videos.pull(video);
+
+    await playlist.save();
+    console.log(playlist);
+
+    return res.status(200).json(playlist);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Error adding video to playlist' });
+  }
+};
 
 
-
-// module.exports = {creatPlayList};

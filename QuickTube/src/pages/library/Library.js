@@ -16,11 +16,12 @@ export const Library = () => {
   useEffect(() => {
     getLibrary();
   }, []);
+  console.log(library);
   return (
     <>
       <div className="video-listing-container">
         <Sidebar />
-        {library.length === 0 ? (
+        {library?.length === 0 ? (
           <div className="login-page-container">
             <div className="no-video-present">
               <h1 className="title-text"> There is no PlayList 😢 </h1>
@@ -31,13 +32,13 @@ export const Library = () => {
           </div>
         ) : (
           <div className="playlist-lists">
-            {library.map((item) => (
+            {library?.map((item) => (
               <div
                 className="playlists"
                 onClick={() => getLibraryVideos(item._id)}
                 key={item._id}
               >
-                {item.title}
+                {item.playListName}
                 <button onClick={() => removePlayList(item._id) }>
                   <i className="fa fa-trash"></i>
                 </button>

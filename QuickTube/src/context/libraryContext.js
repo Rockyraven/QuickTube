@@ -20,15 +20,18 @@ const LibraryProvider = ({children}) => {
   const createLibraryVideo = async (title) => {
     try {
       const response = await axios.post(
-        "/api/user/playlists",
-        { playlist: { title: title } },
+        "http://localhost:5000/playlist/",
+        {
+          "playListName": title
+          
+     },
         {
           headers: {
             authorization: user.encodedToken,
           },
         }
         );
-        setLibrary(response.data.playlists)
+        getLibrary();
 
     } catch (error) {
       console.log(error);
@@ -37,12 +40,13 @@ const LibraryProvider = ({children}) => {
 
   const getLibrary = async () => {
     try {
-      const response = await axios.get("/api/user/playlists", {
+      const response = await axios.get("http://localhost:5000/playlist/", {
         headers: {
-          authorization: user.encodedToken,
+          Authorization: user.encodedToken,
         },
       });
-      setLibraryVideo(response.data.playlists);
+      console.log(response);
+      setLibrary(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -50,12 +54,13 @@ const LibraryProvider = ({children}) => {
   const getLibraryVideos = async (id) => {
     
     try {
-      const response = await axios.get(`/api/user/playlists/${id}`, {
+      const response = await axios.get(`http://localhost:5000/playlist/get/${id}`, {
         headers: {
           authorization: user.encodedToken,
         },
       });
-      setGetLibraryVideo(response.data.playlist.videos);
+      console.log(response.data.videos);
+      setGetLibraryVideo(response.data.videos);
     } catch (error) {
       console.log(error);
     }
@@ -64,8 +69,11 @@ const LibraryProvider = ({children}) => {
   const addVideoToLibraray = async (id,video) => {
     try {
       const response = await axios.post(
-        `/api/user/playlists/${id}`,
-        { video },
+        `http://localhost:5000/playlist/add/addVideo`,
+        {
+          "playlistId" : id,
+          "videoId" : video
+      },
         {
           headers: {
             authorization: user.encodedToken,
@@ -80,13 +88,16 @@ const LibraryProvider = ({children}) => {
 
   const removePlayList = async (playlistId) => {
     try {
-      const response = await axios.delete(`/api/user/playlists/${playlistId}`, {
+      const response = await axios.delete(`http://localhost:5000/playlist/${playlistId}`, {
         headers: {
           'authorization': user.encodedToken
         }
       });
+      console.log(response);
       toast.error("Video Removed");
-      setLibrary(response.data.playlists);
+      getLibrary();
+      getLibraryVideos();
+      // setLibrary(response.data);
     }
     catch(error){
       console.log(error)

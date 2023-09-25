@@ -1,5 +1,5 @@
 import { useLibrary } from "context/libraryContext";
-import React from "react";
+import React, { useEffect } from "react";
 import "./model.css";
 export const Model = ({ video }) => {
   const {
@@ -10,10 +10,16 @@ export const Model = ({ video }) => {
     createLibraryVideo,
     library,
     addVideoToLibraray,
+    getLibrary
   } = useLibrary();
   const modelCloseHandler = () => {
     setDisplay("none");
   };
+
+  useEffect(() => {
+    getLibrary();
+  },[])
+  console.log(library);
 
   return (
     <>
@@ -26,14 +32,14 @@ export const Model = ({ video }) => {
             </p>
           </div>
          
-            {library.map((item) => (
+            {library?.map((item) => (
               
 
               <div className="playlist-list"
                 onClick={() => addVideoToLibraray(item._id, video)}
                 key={item._id}
               >
-                {item.title}
+                {item.playListName}
               </div>
             ))}
         
