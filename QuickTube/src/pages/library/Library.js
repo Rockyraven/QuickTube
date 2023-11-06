@@ -16,7 +16,8 @@ export const Library = () => {
   useEffect(() => {
     getLibrary();
   }, []);
-  console.log(library);
+  library.map(item => console.log(...item.videos));
+  console.log(getLibraryVideo.map(item => item._id  ));
   return (
     <>
       <div className="video-listing-container">

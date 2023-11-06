@@ -45,7 +45,8 @@ const LibraryProvider = ({children}) => {
           Authorization: user.encodedToken,
         },
       });
-      console.log(response);
+      getLibraryVideos();
+      console.log(response.data);
       setLibrary(response.data);
     } catch (error) {
       console.log(error);

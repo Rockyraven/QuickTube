@@ -26,7 +26,7 @@ app.use("/playlist", playListRouter);
 
 mongoose
   .connect(
-    "mongodb+srv://youtube:youtube@cluster0.urxx7wc.mongodb.net/?retryWrites=true&w=majority"
+    "mongodb+srv://youtube:youtube@cluster0.urxx7wc.mongodb.net/"
   )
   .then(() => {
     console.log("database connected ");
